@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 const HANDLERS = {
   INITIALIZE: 'INITIALIZE',
@@ -75,7 +76,8 @@ export const AuthProvider = (props) => {
     let isAuthenticated = false;
 
     try {
-      isAuthenticated = window.sessionStorage.getItem('authenticated') === 'true';
+      const check = await localStorage.getItem('userMail')
+      if(check)  isAuthenticated = true;
     } catch (err) {
       console.error(err);
     }
@@ -87,7 +89,6 @@ export const AuthProvider = (props) => {
         name: 'Anika Visser',
         email: 'anika.visser@devias.io'
       };
-
       dispatch({
         type: HANDLERS.INITIALIZE,
         payload: user
@@ -128,27 +129,38 @@ export const AuthProvider = (props) => {
   };
 
   const signIn = async (email, password) => {
-    if (email !== 'demo@devias.io' || password !== 'Password123!') {
-      throw new Error('Please check your email and password');
-    }
+    // if (email !== 'demo@devias.io' || password !== 'Password123!') {
+    //   throw new Error('Please check your email and password');
+    // }
 
     try {
-      window.sessionStorage.setItem('authenticated', 'true');
+      const response = await axios.post(
+        "https://backend.iigminstitute.com/api/auth/login",
+        {
+          email,
+          password,
+        });
+      if (response.data.status) {
+        await localStorage.setItem("userMail", JSON.stringify(email));
+        await localStorage.setItem("token", JSON.stringify(response.data.token));
+        await window.sessionStorage.setItem('authenticated', 'true');
+        const user = {
+          id: '5e86809283e28b96d2d38537',
+          avatar: '/assets/avatars/avatar-anika-visser.png',
+          name: 'Anika Visser',
+          email: 'anika.visser@devias.io'
+        };
+        dispatch({
+          type: HANDLERS.SIGN_IN,
+          payload: user
+        });
+      } else {
+        const msg = response.data.msg;
+        alert(msg)
+      };
     } catch (err) {
       console.error(err);
     }
-
-    const user = {
-      id: '5e86809283e28b96d2d38537',
-      avatar: '/assets/avatars/avatar-anika-visser.png',
-      name: 'Anika Visser',
-      email: 'anika.visser@devias.io'
-    };
-
-    dispatch({
-      type: HANDLERS.SIGN_IN,
-      payload: user
-    });
   };
 
   const signUp = async (email, name, password) => {

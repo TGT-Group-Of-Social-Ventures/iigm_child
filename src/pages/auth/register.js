@@ -30,7 +30,16 @@ const Page = () => {
       password: Yup
         .string()
         .max(255)
-        .required('Password is required')
+        .required('Password is required'),
+      phoneNumber: Yup
+        .string()
+        .matches(/^\d{10}$/, "Phone number must be 10 digits")
+        .required("Phone number is required"),
+      userAge: Yup
+        .number()
+        .integer("Age must be an integer")
+        .positive("Age must be a positive number")
+        .required("Age is required"),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -127,6 +136,28 @@ const Page = () => {
                   onChange={formik.handleChange}
                   type="password"
                   value={formik.values.password}
+                />
+                <TextField
+                  error={!!(formik.touched.phoneNumber && formik.errors.phoneNumber)}
+                  fullWidth
+                  helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
+                  label="Phone Number"
+                  name="phone"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  type="text"
+                  value={formik.values.password}
+                />
+                <TextField
+                  error={!!(formik.touched.userAge && formik.errors.userAge)}
+                  fullWidth
+                  helperText={formik.touched.userAge && formik.errors.userAge}
+                  label="Age"
+                  name="age"
+                  onBlur={formik.handleBlur}
+                  onChange={formik.handleChange}
+                  type="text"
+                  value={formik.values.userAge}
                 />
               </Stack>
               {formik.errors.submit && (
