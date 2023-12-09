@@ -1,0 +1,1 @@
+export {default as ProfileReducer} from './Profile.Reducer'
