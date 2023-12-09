@@ -27,10 +27,8 @@ const user = {
 
 export const AccountProfile = () => {
 
-  // const dispatch = useDispatch();
   const dispatch = useDispatch();
   const { userData, error, loading } = useSelector((state) => state.data);
-  // console.log('req',userData)
 
   useEffect(() => {
     dispatch(getAllUserDetails());

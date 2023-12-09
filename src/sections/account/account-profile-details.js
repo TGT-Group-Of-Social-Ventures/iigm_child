@@ -39,7 +39,9 @@ export const AccountProfileDetails = () => {
 
   useEffect(() => {
     dispatch(getAllUserDetails());
-  }, [])
+  }, [dispatch]
+  
+  )
   const [values, setValues] = useState({
     firstName: 'Anika',
     lastName: 'Visser',
