@@ -1,9 +1,8 @@
 import { combineReducers } from "redux";
 import  ProfileReducer  from "./Profile";
-// import { constants } from "crypto";
 
 const RootReducer = combineReducers({
-    userData : ProfileReducer   
+    data : ProfileReducer   
 })
 
 export default RootReducer;

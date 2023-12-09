@@ -8,6 +8,10 @@ import {
   Divider,
   Typography
 } from '@mui/material';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllUserDetails } from 'src/redux/actions';
+
 
 const user = {
   avatar: '/assets/avatars/avatar-anika-visser.png',
@@ -18,8 +22,20 @@ const user = {
   timezone: 'GTM-7'
 };
 
-export const AccountProfile = () => (
-  <Card>
+
+
+export const AccountProfile = () => {  // const dispatch = useDispatch();
+
+  const dispatch = useDispatch();
+  const {userData,error,loading} = useSelector((state) => state.data);
+  
+  useEffect(()=>{
+    dispatch(getAllUserDetails());
+  },[])
+
+  
+
+  return (<Card>
     <CardContent>
       <Box
         sx={{
@@ -66,4 +82,6 @@ export const AccountProfile = () => (
       </Button>
     </CardActions>
   </Card>
-);
+  );
+
+}
