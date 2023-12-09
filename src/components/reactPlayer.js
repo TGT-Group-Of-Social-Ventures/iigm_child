@@ -16,19 +16,21 @@ const CoursePlayer = ({url}) => {
 
   return (
     <>
-      <Grid container spacing={2} width={"100%"}>
+      {/* <Grid container spacing={2} width={"100%"}>
         <Grid item display={"flex"} width={"100%"}>
           <Box>
-            <Card elevation={5} maxWidth={"100%"}>
+            <Card elevation={5} maxWidth={"100%"}> */}
               <ReactPlayer
                 url={url}
                 controls={true}
                 config={playerConfig}
+                width="640px"
+                height="360px"
               />
-            </Card>
+            {/* </Card>
           </Box>
         </Grid>
-      </Grid>
+      </Grid> */}
     </>
   );
 };

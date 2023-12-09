@@ -158,8 +158,8 @@ const Page = () => {
                             <Card elevation={0}>
                                 <CardContent>
                                     <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
-                                        <Typography variant="h3">Course Name:</Typography>
-                                        <Typography variant="h3" >
+                                        <Typography variant="h5">Course Name:</Typography>
+                                        <Typography variant="h5" >
                                             {courseData.courseTitle}
                                         </Typography>
                                     </Paper>
@@ -169,7 +169,7 @@ const Page = () => {
                                     </Grid>
                                     <br />
                                     <Grid display={"flex"} direction={"column"}>
-                                        <Typography variant="h4">Course Details</Typography>
+                                        <Typography variant="h6">Course Details</Typography>
                                         <Box>
                                             <div>
                                                 <Accordion
@@ -291,7 +291,7 @@ const Page = () => {
                             <Card elevation={0}>
                                 <CardContent>
                                     <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
-                                        <Typography variant="h4" >
+                                        <Typography variant="h6" >
                                             Course Content:
                                         </Typography>
                                     </Paper>
