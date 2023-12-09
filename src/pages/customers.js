@@ -225,7 +225,7 @@ const Page = () => {
                   direction="row"
                   spacing={1}
                 >
-                  <Button
+                  {/* <Button
                     color="inherit"
                     startIcon={(
                       <SvgIcon fontSize="small">
@@ -244,10 +244,10 @@ const Page = () => {
                     )}
                   >
                     Export
-                  </Button>
+                  </Button> */}
                 </Stack>
               </Stack>
-              <div>
+              {/* <div>
                 <Button
                   startIcon={(
                     <SvgIcon fontSize="small">
@@ -258,7 +258,7 @@ const Page = () => {
                 >
                   Add
                 </Button>
-              </div>
+              </div> */}
             </Stack>
             <CustomersSearch />
             <CustomersTable
