@@ -4,14 +4,14 @@ import {
 import axios from 'axios';
 
 
-const getAllUserDetails = async () => {
+export const getAllUserDetails = async () => {
     const token = await localStorage.getItem("token").slice(1, -1);
     const email = await localStorage.getItem("userMail").slice(1, -1);
     await getUserData(token, email);
 }
 
 
-const getUserData = async (token, email) => {
+export const getUserData = async (token, email) => {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
     try {
         const response = await axios.post('https://backend.iigminstitute.com/api/auth/profile', {
