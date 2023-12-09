@@ -1,3 +1,4 @@
+import UsersIcon from '@heroicons/react/24/solid/UsersIcon';
 import {
   Avatar,
   Box,
@@ -16,7 +17,7 @@ import { getAllUserDetails } from 'src/redux/actions';
 const user = {
   avatar: '/assets/avatars/avatar-anika-visser.png',
   city: 'Los Angeles',
-  country: 'USA',
+  country: 'India',
   jobTitle: 'Senior Developer',
   name: 'Anika Visser',
   timezone: 'GTM-7'
@@ -24,18 +25,18 @@ const user = {
 
 
 
-export const AccountProfile = () => { 
-  
+export const AccountProfile = () => {
+
   // const dispatch = useDispatch();
   const dispatch = useDispatch();
-  const req = useSelector((state) => state.data);
-  console.log('req',req)
-  
-  useEffect(()=>{
-    dispatch(getAllUserDetails());
-  },[])
+  const { userData, error, loading } = useSelector((state) => state.data);
+  // console.log('req',userData)
 
-  
+  useEffect(() => {
+    dispatch(getAllUserDetails());
+  }, [])
+
+
 
   return (<Card>
     <CardContent>
@@ -58,13 +59,13 @@ export const AccountProfile = () => {
           gutterBottom
           variant="h5"
         >
-          {user.name}
+          {userData.name}
         </Typography>
         <Typography
           color="text.secondary"
           variant="body2"
         >
-          {user.city} {user.country}
+          {userData.location} {user.country}
         </Typography>
         <Typography
           color="text.secondary"

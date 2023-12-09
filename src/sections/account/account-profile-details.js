@@ -10,7 +10,10 @@ import {
   TextField,
   Unstable_Grid2 as Grid
 } from '@mui/material';
-import { useProfile } from 'src/hooks/use-profile';
+import { useProfile ,} from 'src/hooks/use-profile';
+import { useDispatch,useSelector } from 'react-redux';
+import { getAllUserDetails } from 'src/redux/actions';
+
 const states = [
   {
     value: 'alabama',
@@ -31,14 +34,12 @@ const states = [
 ];
 
 export const AccountProfileDetails = () => {
-  const profile = useProfile(); 
-  console.log('kisha',profile)
-  useEffect(()=>{
-    const fetchData = async () => {
-      await profile.getAllUserDetails();
-      console.log('kishan', profile);
-    };
-  },[])
+  const dispatch = useDispatch();
+  const { userData, error, loading } = useSelector((state) => state.data);
+
+  useEffect(() => {
+    dispatch(getAllUserDetails());
+  }, [])
   const [values, setValues] = useState({
     firstName: 'Anika',
     lastName: 'Visser',
@@ -93,7 +94,7 @@ export const AccountProfileDetails = () => {
                   name="fullName"
                   onChange={handleChange}
                   required
-                  value={values.firstName}
+                  value={userData.name}
                 />
               </Grid>
               <Grid
@@ -106,7 +107,7 @@ export const AccountProfileDetails = () => {
                   name="position"
                   onChange={handleChange}
                   required
-                  value={values.lastName}
+                  value={userData.position}
                 />
               </Grid>
               <Grid
@@ -119,7 +120,7 @@ export const AccountProfileDetails = () => {
                   name="email"
                   onChange={handleChange}
                   required
-                  value={values.email}
+                  value={userData.email}
                 />
               </Grid>
               <Grid
@@ -132,7 +133,7 @@ export const AccountProfileDetails = () => {
                   name="phone"
                   onChange={handleChange}
                   type="number"
-                  value={values.phone}
+                  value={userData.phone}
                 />
               </Grid>
               <Grid
