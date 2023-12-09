@@ -28,7 +28,7 @@ export const items = [
     )
   },
   {
-    title: 'Companies',
+    title: 'CGF Course',
     path: '/companies',
     icon: (
       <SvgIcon fontSize="small">

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -10,7 +10,7 @@ import {
   TextField,
   Unstable_Grid2 as Grid
 } from '@mui/material';
-
+import { useProfile } from 'src/hooks/use-profile';
 const states = [
   {
     value: 'alabama',
@@ -31,6 +31,14 @@ const states = [
 ];
 
 export const AccountProfileDetails = () => {
+  const profile = useProfile(); 
+  console.log('kisha',profile)
+  useEffect(()=>{
+    const fetchData = async () => {
+      await profile.getAllUserDetails();
+      console.log('kishan', profile);
+    };
+  },[])
   const [values, setValues] = useState({
     firstName: 'Anika',
     lastName: 'Visser',
