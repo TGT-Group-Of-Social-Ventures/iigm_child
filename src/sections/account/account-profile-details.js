@@ -88,9 +88,9 @@ export const AccountProfileDetails = () => {
               >
                 <TextField
                   fullWidth
-                  helperText="Please specify the first name"
-                  label="First name"
-                  name="firstName"
+                  helperText="Please specify full name"
+                  label="Full Name"
+                  name="fullName"
                   onChange={handleChange}
                   required
                   value={values.firstName}
@@ -102,8 +102,8 @@ export const AccountProfileDetails = () => {
               >
                 <TextField
                   fullWidth
-                  label="Last name"
-                  name="lastName"
+                  label="Position"
+                  name="position"
                   onChange={handleChange}
                   required
                   value={values.lastName}

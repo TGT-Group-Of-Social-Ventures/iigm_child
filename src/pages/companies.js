@@ -71,7 +71,7 @@ const Page = () => (
   <>
     <Head>
       <title>
-        Companies | Devias Kit
+        Courses | IIGM
       </title>
     </Head>
     <Box
@@ -83,7 +83,7 @@ const Page = () => (
     >
       <Container maxWidth="xl">
         <Stack spacing={3}>
-          <Stack
+          {/* <Stack
             direction="row"
             justifyContent="space-between"
             spacing={4}
@@ -131,8 +131,8 @@ const Page = () => (
                 Add
               </Button>
             </div>
-          </Stack>
-          <CompaniesSearch />
+          </Stack> */}
+          {/* <CompaniesSearch /> */}
           <Grid
             container
             spacing={3}

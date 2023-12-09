@@ -19,7 +19,7 @@ export const items = [
     )
   },
   {
-    title: 'Customers',
+    title: 'Batchmates',
     path: '/customers',
     icon: (
       <SvgIcon fontSize="small">
@@ -28,7 +28,7 @@ export const items = [
     )
   },
   {
-    title: 'CGF Course',
+    title: 'Courses',
     path: '/companies',
     icon: (
       <SvgIcon fontSize="small">
