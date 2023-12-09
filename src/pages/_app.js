@@ -18,8 +18,7 @@ const SplashScreen = () => null;
 
 const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-  console.log('compo', Component);
-  console.log('pageProps', pageProps);
+
 
 
   useNProgress();
