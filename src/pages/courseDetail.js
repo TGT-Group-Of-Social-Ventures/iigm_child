@@ -7,6 +7,7 @@ import {
     Grid,
     Card,
     CardContent,
+    Stack
 } from "@mui/material";
 import Head from 'next/head';
 import Accordion from "@mui/material/Accordion";
@@ -20,6 +21,7 @@ import ListItemText from "@mui/material/ListItemText";
 import LockIcon from "@mui/icons-material/Lock";
 import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
 import { Co2Sharp } from "@mui/icons-material";
+import { Container } from "@mui/system";
 
 
 
@@ -147,204 +149,217 @@ const Page = () => {
                     Course || IIGM
                 </title>
             </Head>
-            <Box m={"20px"}>
-                <Typography
-                    title={"Course Description"}
-                    subtitle={"View all your courses here"}
-                />
-                <Box style={containerStyle}>
-                    <Grid elevation={0} display={"flex"} p={"24px"} textAlign={"center"} sx={{ boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}>
-                        <Grid minWidth={"50%"} sx={12}>
-                            <Card elevation={0}>
-                                <CardContent>
-                                    <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
-                                        <Typography variant="h5">Course Name:</Typography>
-                                        <Typography variant="h5" >
-                                            {courseData.courseTitle}
-                                        </Typography>
-                                    </Paper>
-                                    <br />
-                                    <Grid style={playerStyle}>
-                                        <CoursePlayer url={playerLink} />
-                                    </Grid>
-                                    <br />
-                                    <Grid display={"flex"} direction={"column"}>
-                                        <Typography variant="h6">Course Details</Typography>
-                                        <Box>
-                                            <div>
-                                                <Accordion
-                                                    expanded={expanded === "panel1"}
-                                                    onChange={handleChange("panel1")}
-                                                >
-                                                    <AccordionSummary
-                                                        expandIcon={<ExpandMoreIcon />}
-                                                        aria-controls="panel1bh-content"
-                                                        id="panel1bh-header"
-                                                    >
-                                                        <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                                                            Course Overview
-                                                        </Typography>
-                                                        <Typography sx={{ color: "text.secondary" }}>
-                                                            {courseData.courseOverview.header}
-                                                        </Typography>
-                                                    </AccordionSummary>
-                                                    <AccordionDetails>
-                                                        <Typography>
-                                                            {courseData.courseOverview.body}
-                                                        </Typography>
-                                                    </AccordionDetails>
-                                                </Accordion>
-                                                <Accordion
-                                                    expanded={expanded === "panel2"}
-                                                    onChange={handleChange("panel2")}
-                                                >
-                                                    <AccordionSummary
-                                                        expandIcon={<ExpandMoreIcon />}
-                                                        aria-controls="panel2bh-content"
-                                                        id="panel2bh-header"
-                                                    >
-                                                        <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                                                            Course Contents
-                                                        </Typography>
-                                                        <Typography sx={{ color: "text.secondary" }}>
-                                                            {courseData.courseContent.header}
-                                                        </Typography>
-                                                    </AccordionSummary>
-                                                    <AccordionDetails>
-                                                        <Typography>
-                                                            <List
-                                                                sx={{
-                                                                    width: "100%",
-                                                                    maxWidth: 360,
-                                                                    bgcolor: "background.paper",
-                                                                    position: "relative",
-                                                                    overflow: "auto",
-                                                                    maxHeight: 300,
-                                                                    "& ul": { padding: 0 },
-                                                                }}
-                                                                subheader={<li />}
-                                                            >
-                                                                <li>
-                                                                    <ul>
-                                                                        {courseData.courseContent.body.map((item) => (
-                                                                            <ListItem key={`${item}`}>
-                                                                                <ListItemText primary={`${item}`} />
-                                                                            </ListItem>
-                                                                        ))}
-                                                                    </ul>
-                                                                </li>
-                                                            </List>
-                                                        </Typography>
-                                                    </AccordionDetails>
-                                                </Accordion>
-                                                <Accordion
-                                                    expanded={expanded === "panel3"}
-                                                    onChange={handleChange("panel3")}
-                                                >
-                                                    <AccordionSummary
-                                                        expandIcon={<ExpandMoreIcon />}
-                                                        aria-controls="panel3bh-content"
-                                                        id="panel3bh-header"
-                                                    >
-                                                        <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                                                            Other Information
-                                                        </Typography>
-                                                        <Typography sx={{ color: "text.secondary" }}>
-                                                            {courseData.otherInformation.header}
-                                                        </Typography>
-                                                    </AccordionSummary>
-                                                    <AccordionDetails>
-                                                        <Typography>
-                                                            {courseData.otherInformation.body}
-                                                        </Typography>
-                                                    </AccordionDetails>
-                                                </Accordion>
-                                                <Accordion
-                                                    expanded={expanded === "panel4"}
-                                                    onChange={handleChange("panel4")}
-                                                >
-                                                    <AccordionSummary
-                                                        expandIcon={<ExpandMoreIcon />}
-                                                        aria-controls="panel4bh-content"
-                                                        id="panel4bh-header"
-                                                    >
-                                                        <Typography sx={{ width: "33%", flexShrink: 0 }}>
-                                                            Eligibility Criteria
-                                                        </Typography>
-                                                        <Typography sx={{ color: "text.secondary" }}>
-                                                            {courseData.eligibilityCriteria.header}
-                                                        </Typography>
-                                                    </AccordionSummary>
-                                                    <AccordionDetails>
-                                                        <Typography>
-                                                            {courseData.eligibilityCriteria.body[0]}
-                                                        </Typography>
-                                                    </AccordionDetails>
-                                                </Accordion>
-                                            </div>
-                                        </Box>
-                                    </Grid>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid xs={12} minWidth={"50%"}>
-                            <Card elevation={0}>
-                                <CardContent>
-                                    <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
-                                        <Typography variant="h6" >
-                                            Course Content:
-                                        </Typography>
-                                    </Paper>
-                                    <div style={scrollableContainerStyle}>
-                                        <Grid container spacing={3}>
-                                            {courseData.courseContents.map((course, index) => (
-                                                <Grid item xs={12} sm={12} key={index}>
-                                                    <Accordion
-                                                        disabled={course.disabled === true ? true : false}
-                                                    >
-                                                        <AccordionSummary
-                                                            expandIcon={
-                                                                course.disabled === true ? (
-                                                                    <LockIcon />
-                                                                ) : (
-                                                                    <ExpandMoreIcon />
-                                                                )
-                                                            }
-                                                            aria-controls="panel1a-content"
-                                                            id="panel1a-header"
+            <Box
+                component="main"
+                sx={{
+                    flexGrow: 1,
+                    py: 8
+                }}
+            >
+                <Container maxWidth="lg">
+                    <Stack spacing={3}>
+                        <div>
+                            <Typography variant="h4">
+                                CGF Course
+                            </Typography>
+                        </div>
+                        <div>
+                            <Grid container
+                             spacing = {3}
+                            >
+                                <Grid  xs={12} md={6} lg={6}>
+                                    <Card elevation={0} sx={cardStyle}>
+                                        <CardContent>
+                                            <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
+                                                <Typography variant="h5">Course Name:</Typography>
+                                                <Typography variant="h5" >
+                                                    {courseData.courseTitle}
+                                                </Typography>
+                                            </Paper>
+                                            <br />
+                                            <Grid style={playerStyle}>
+                                                <CoursePlayer url={playerLink} />
+                                            </Grid>
+                                            <br />
+                                            <Grid container direction="column">
+                                                <Typography variant="h6">Course Details</Typography>
+                                                <Box>
+                                                    <div>
+                                                        <Accordion
+                                                            expanded={expanded === "panel1"}
+                                                            onChange={handleChange("panel1")}
                                                         >
-                                                            <Typography variant="h5">
-                                                                {course.courseTitle}
-                                                            </Typography>
-                                                        </AccordionSummary>
-                                                        <AccordionDetails>
-                                                            <Typography>
-                                                                <p style={{ marginBottom: "8px" }}>
-                                                                    {course.description}
-                                                                </p>
-                                                            </Typography>
-                                                            <Typography variant="subtitle1" gutterBottom>
-                                                                Lecture Link:{" "}
-                                                                <button
-                                                                    onClick={(e) => handleVideoPlay(e, course.lectureLink)}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    style={videoLinkStyle}
+                                                            <AccordionSummary
+                                                                expandIcon={<ExpandMoreIcon />}
+                                                                aria-controls="panel1bh-content"
+                                                                id="panel1bh-header"
+                                                            >
+                                                                <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                                                                    Course Overview
+                                                                </Typography>
+                                                                <Typography sx={{ color: "text.secondary" }}>
+                                                                    {courseData.courseOverview.header}
+                                                                </Typography>
+                                                            </AccordionSummary>
+                                                            <AccordionDetails>
+                                                                <Typography>
+                                                                    {courseData.courseOverview.body}
+                                                                </Typography>
+                                                            </AccordionDetails>
+                                                        </Accordion>
+                                                        <Accordion
+                                                            expanded={expanded === "panel2"}
+                                                            onChange={handleChange("panel2")}
+                                                        >
+                                                            <AccordionSummary
+                                                                expandIcon={<ExpandMoreIcon />}
+                                                                aria-controls="panel2bh-content"
+                                                                id="panel2bh-header"
+                                                            >
+                                                                <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                                                                    Course Contents
+                                                                </Typography>
+                                                                <Typography sx={{ color: "text.secondary" }}>
+                                                                    {courseData.courseContent.header}
+                                                                </Typography>
+                                                            </AccordionSummary>
+                                                            <AccordionDetails>
+                                                                <Typography>
+                                                                    <List
+                                                                        sx={{
+                                                                            width: "100%",
+                                                                            maxWidth: 360,
+                                                                            bgcolor: "background.paper",
+                                                                            position: "relative",
+                                                                            overflow: "auto",
+                                                                            maxHeight: 300,
+                                                                            "& ul": { padding: 0 },
+                                                                        }}
+                                                                        subheader={<li />}
+                                                                    >
+                                                                        <li>
+                                                                            <ul>
+                                                                                {courseData.courseContent.body.map((item) => (
+                                                                                    <ListItem key={`${item}`}>
+                                                                                        <ListItemText primary={`${item}`} />
+                                                                                    </ListItem>
+                                                                                ))}
+                                                                            </ul>
+                                                                        </li>
+                                                                    </List>
+                                                                </Typography>
+                                                            </AccordionDetails>
+                                                        </Accordion>
+                                                        <Accordion
+                                                            expanded={expanded === "panel3"}
+                                                            onChange={handleChange("panel3")}
+                                                        >
+                                                            <AccordionSummary
+                                                                expandIcon={<ExpandMoreIcon />}
+                                                                aria-controls="panel3bh-content"
+                                                                id="panel3bh-header"
+                                                            >
+                                                                <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                                                                    Other Information
+                                                                </Typography>
+                                                                <Typography sx={{ color: "text.secondary" }}>
+                                                                    {courseData.otherInformation.header}
+                                                                </Typography>
+                                                            </AccordionSummary>
+                                                            <AccordionDetails>
+                                                                <Typography>
+                                                                    {courseData.otherInformation.body}
+                                                                </Typography>
+                                                            </AccordionDetails>
+                                                        </Accordion>
+                                                        <Accordion
+                                                            expanded={expanded === "panel4"}
+                                                            onChange={handleChange("panel4")}
+                                                        >
+                                                            <AccordionSummary
+                                                                expandIcon={<ExpandMoreIcon />}
+                                                                aria-controls="panel4bh-content"
+                                                                id="panel4bh-header"
+                                                            >
+                                                                <Typography sx={{ width: "33%", flexShrink: 0 }}>
+                                                                    Eligibility Criteria
+                                                                </Typography>
+                                                                <Typography sx={{ color: "text.secondary" }}>
+                                                                    {courseData.eligibilityCriteria.header}
+                                                                </Typography>
+                                                            </AccordionSummary>
+                                                            <AccordionDetails>
+                                                                <Typography>
+                                                                    {courseData.eligibilityCriteria.body[0]}
+                                                                </Typography>
+                                                            </AccordionDetails>
+                                                        </Accordion>
+                                                    </div>
+                                                </Box>
+                                            </Grid>
+                                        </CardContent>
+                                    </Card>
+                                </Grid>
+                                <Grid xs={12} md={6} lg={6}>
+                                    <Card elevation={0}>
+                                        <CardContent>
+                                            <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
+                                                <Typography variant="h6" >
+                                                    Course Content:
+                                                </Typography>
+                                            </Paper>
+                                            <div style={scrollableContainerStyle}>
+                                                <Grid container spacing={3}>
+                                                    {courseData.courseContents.map((course, index) => (
+                                                        <Grid item xs={12} sm={12} key={index}>
+                                                            <Accordion
+                                                                disabled={course.disabled === true ? true : false}
+                                                            >
+                                                                <AccordionSummary
+                                                                    expandIcon={
+                                                                        course.disabled === true ? (
+                                                                            <LockIcon />
+                                                                        ) : (
+                                                                            <ExpandMoreIcon />
+                                                                        )
+                                                                    }
+                                                                    aria-controls="panel1a-content"
+                                                                    id="panel1a-header"
                                                                 >
-                                                                    Start Lecture
-                                                                </button>
-                                                            </Typography>
-                                                        </AccordionDetails>
-                                                    </Accordion>
+                                                                    <Typography variant="h5">
+                                                                        {course.courseTitle}
+                                                                    </Typography>
+                                                                </AccordionSummary>
+                                                                <AccordionDetails>
+                                                                    <Typography>
+                                                                        <p style={{ marginBottom: "8px" }}>
+                                                                            {course.description}
+                                                                        </p>
+                                                                    </Typography>
+                                                                    <Typography variant="subtitle1" gutterBottom>
+                                                                        Lecture Link:{" "}
+                                                                        <button
+                                                                            onClick={(e) => handleVideoPlay(e, course.lectureLink)}
+                                                                            target="_blank"
+                                                                            rel="noopener noreferrer"
+                                                                            style={videoLinkStyle}
+                                                                        >
+                                                                            Start Lecture
+                                                                        </button>
+                                                                    </Typography>
+                                                                </AccordionDetails>
+                                                            </Accordion>
+                                                        </Grid>
+                                                    ))}
                                                 </Grid>
-                                            ))}
-                                        </Grid>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    </Grid>
-                </Box>
+                                            </div>
+                                        </CardContent>
+                                    </Card>
+                                </Grid>
+                            </Grid>
+                        </div>
+                    </Stack>
+                </Container>
             </Box>
         </>
     );
