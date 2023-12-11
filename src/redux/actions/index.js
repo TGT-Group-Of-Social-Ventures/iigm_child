@@ -4,3 +4,8 @@ export {
     getUserData
 }
     from './Profile/AuthActions'
+
+export {
+    getCourseContent
+}
+ from './Courses/AuthAction'
