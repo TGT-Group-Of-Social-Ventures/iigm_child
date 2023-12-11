@@ -34,7 +34,7 @@ const containerStyle = {
 const cardStyle = {
     display: "flex",
     // maxWidth: "100%",
-    // padding: "24px",
+    // padding: "24px",     
     // textAlign: "center",
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
 };
