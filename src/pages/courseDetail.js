@@ -33,9 +33,9 @@ const containerStyle = {
 
 const cardStyle = {
     display: "flex",
-    maxWidth: "100%",
-    padding: "24px",
-    textAlign: "center",
+    // maxWidth: "100%",
+    // padding: "24px",
+    // textAlign: "center",
     boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
 };
 
@@ -177,8 +177,8 @@ const Page = () => {
                                                 </Typography>
                                             </Paper>
                                             <br />
+                                            <CoursePlayer url={playerLink} />
                                             <Grid style={playerStyle}>
-                                                <CoursePlayer url={playerLink} />
                                             </Grid>
                                             <br />
                                             <Grid container direction="column">
@@ -361,7 +361,7 @@ const Page = () => {
                     </Stack>
                 </Container>
             </Box>
-        </>
+        </> 
     );
 };
 
