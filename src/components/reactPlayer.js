@@ -4,7 +4,7 @@ import ReactPlayer from "react-player";
 
 const CoursePlayer = ({url}) => {
   // const [currentStream, setCurrentStream] = useState(false);
-  console.log(url);
+  // console.log(url);
   const playerConfig = {
     file: {
       attributes: {

@@ -1,1 +1,1 @@
-export const COURSES = COURSES
+export const COURSES = 'COURSES'
