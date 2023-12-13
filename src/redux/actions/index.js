@@ -9,3 +9,8 @@ export {
     getCourseContent
 }
  from './Courses/AuthAction'
+
+ export {
+    signUp
+ }
+ from './Auth/AuthAction'

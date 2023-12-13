@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
+import { createContext, useContext, useEffect, useReducer, useRef ,useState} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
@@ -63,6 +63,7 @@ export const AuthContext = createContext({ undefined });
 export const AuthProvider = (props) => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
+  const [userMail,setUserMail] = useState('');
   const initialized = useRef(false);
 
   const initialize = async () => {
@@ -78,6 +79,7 @@ export const AuthProvider = (props) => {
     try {
       const check = await localStorage.getItem('userMail')
       if(check)  isAuthenticated = true;
+      setUserMail(check.split(1,-1));
     } catch (err) {
       console.error(err);
     }
@@ -87,7 +89,7 @@ export const AuthProvider = (props) => {
         id: '5e86809283e28b96d2d38537',
         avatar: '/assets/avatars/avatar-anika-visser.png',
         name: 'Anika Visser',
-        email: 'anika.visser@devias.io'
+        email: userMail
       };
       dispatch({
         type: HANDLERS.INITIALIZE,

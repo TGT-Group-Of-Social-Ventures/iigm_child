@@ -7,7 +7,7 @@ export const getCourseContent = () => {
       const response = await axios.get(
         "https://backend.iigminstitute.com/api/courses/getCourse/IIGM"
       );
-      console.log("hi", response);
+      // console.log("hi", response);
       dispatch({
         type: COURSES,
         payload: response.data.course,
