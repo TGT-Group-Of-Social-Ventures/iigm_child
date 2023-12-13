@@ -67,6 +67,11 @@ const Page = () => {
     [auth, router]
   );
 
+  const handleForgotPassword = async(e)=> {
+    e.preventDefault();
+    router.push('/auth/forgotPassword')
+  }
+
   return (
     <>
       <Head>
@@ -179,14 +184,14 @@ const Page = () => {
                 >
                   Continue
                 </Button>
-                {/* <Button
+                <Button
                   fullWidth
                   size="large"
                   sx={{ mt: 3 }}
-                  onClick={handleSkip}
+                  onClick={(e)=>handleForgotPassword(e)}
                 >
-                  Skip authentication
-                </Button> */}
+                  Forgot Password
+                </Button>
                 {/* <Alert
                   color="primary"
                   severity="info"

@@ -76,7 +76,6 @@ export const AuthProvider = (props) => {
     try {
       const check = await localStorage.getItem("userMail");
       if (check) isAuthenticated = true;
-      setUserMail(check.split(1, -1));
     } catch (err) {
       console.error(err);
     }
@@ -86,7 +85,7 @@ export const AuthProvider = (props) => {
         id: "5e86809283e28b96d2d38537",
         avatar: "/assets/avatars/avatar-anika-visser.png",
         name: "Anika Visser",
-        email: userMail,
+        email: "test@gmail.com",
       };
       dispatch({
         type: HANDLERS.INITIALIZE,
