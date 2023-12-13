@@ -10,11 +10,13 @@ import {
 } from "@mui/material";
 import Alert from "@mui/material/Alert";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Layout as AuthLayout } from "src/layouts/auth/layout";
 
 const Page = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const [email, setEmail] = useState("Loading...");
   const [otp, setOtp] = useState("");
   const [isOtpSent, setIsOtpSent] = useState(false);
@@ -39,6 +41,7 @@ const Page = () => {
 
   const handleDialogClose = () => {
     setIsDialogOpen(false);
+    router.push('/auth/login');
   };
 
   const handleEmailSubmit = async (emailSub) => {
