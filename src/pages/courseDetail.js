@@ -71,7 +71,7 @@ const Page = () => {
   const { courseData, error, loading } = useSelector((state) => state.courseData);
   const courseDataFetched = courseData[0];
   const [expanded, setExpanded] = useState(false);
-  const [playerLink, setPlayerLink] = useState("");
+  const [playerLink, setPlayerLink] = useState(courseDataFetched.introVideo);
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
