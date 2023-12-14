@@ -25,24 +25,24 @@ const Page = () => {
       await localStorage.setItem("verifyEmail", formik.values.email);
       await router.push("/auth/verifyEmail");
     };
-  
+
     if (status) {
       fetchAndRedirect();
     }
-  }, [status,router]);
+  }, [status, router]);
 
   const formik = useFormik({
     initialValues: {
       email: "",
-      name: "",
+      userFullName: "",
       password: "",
       phoneNumber: "",
       userAge: "",
-      submit: null,
+      submit : null,
     },
     validationSchema: Yup.object({
       email: Yup.string().email("Must be a valid email").max(255).required("Email is required"),
-      name: Yup.string().max(255).required("Name is required"),
+      userFullName: Yup.string().max(255).required("Name is required"),
       password: Yup.string().max(255).required("Password is required"),
       phoneNumber: Yup.string()
         .matches(/^\d{10}$/, "Phone number must be 10 digits")
@@ -101,7 +101,7 @@ const Page = () => {
                   fullWidth
                   helperText={formik.touched.name && formik.errors.name}
                   label="Name"
-                  name="name"
+                  name="userFullName"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.name}

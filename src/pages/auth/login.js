@@ -190,7 +190,7 @@ const Page = () => {
                   sx={{ mt: 3 }}
                   onClick={(e)=>handleForgotPassword(e)}
                 >
-                  Forgot Password
+                  Forgot Password?
                 </Button>
                 {/* <Alert
                   color="primary"
