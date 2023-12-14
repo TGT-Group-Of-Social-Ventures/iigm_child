@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback ,useState,useEffect} from 'react';
 import { useRouter } from 'next/navigation';
 import PropTypes from 'prop-types';
 import { Box, Divider, MenuItem, MenuList, Popover, Typography } from '@mui/material';
@@ -8,6 +8,21 @@ export const AccountPopover = (props) => {
   const { anchorEl, onClose, open } = props;
   const router = useRouter();
   const auth = useAuth();
+  const [userName,setUserName] = useState('');
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const test = await localStorage.getItem('userName');
+        setUserName(test);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+  
+    fetchData();
+  
+  }, []);
 
   const handleSignOut = useCallback(
     () => {
@@ -27,7 +42,8 @@ export const AccountPopover = (props) => {
       }}
       onClose={onClose}
       open={open}
-      PaperProps={{ sx: { width: 200 } }}
+      PaperProps=
+      {{ sx: { width: 200 } }}
     >
       <Box
         sx={{
@@ -42,7 +58,7 @@ export const AccountPopover = (props) => {
           color="text.secondary"
           variant="body2"
         >
-          Anika Visser
+          {userName}
         </Typography>
       </Box>
       <Divider />
