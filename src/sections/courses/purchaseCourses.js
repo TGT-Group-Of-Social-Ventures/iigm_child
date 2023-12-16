@@ -9,10 +9,9 @@ import {
   CircularProgress,
 } from "@mui/material";
 
-export default function purchaseCourses() {
+export default function PurchaseCourses() {
   return (
     <Box m="20px">
-      <Header title={"Your Courses"} subtitle={"View All Your Courses Here"} />
       <Box m="40px 0 0 0">
         <Container display={"flex"}>
           <Box textAlign="center">
@@ -20,7 +19,7 @@ export default function purchaseCourses() {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => navigate("/allcourses")}
+              onClick={() => console.log('clicked')}
               sx={{ marginTop: "16px" }}
             >
               Purchase Courses
