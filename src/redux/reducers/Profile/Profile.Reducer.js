@@ -3,7 +3,7 @@ import { PROFILE } from "../../actions/Profile/ActionTypes";
 const initialState = {
   userData: {},
   error: false,
-  loading: false,
+  loading: true,
 };
 
 const ProfileReducer = (state = initialState, action) => {
