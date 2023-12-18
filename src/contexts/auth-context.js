@@ -140,6 +140,8 @@ export const AuthProvider = (props) => {
         await localStorage.setItem("userMail", JSON.stringify(email));
         await localStorage.setItem("token", JSON.stringify(response.data.token));
         await window.sessionStorage.setItem("authenticated", "true");
+        const fetchedUserName = response.data.userReturn.name;
+        await localStorage.setItem('userName',fetchedUserName);
         const user = {
           id: "5e86809283e28b96d2d38537",
           avatar: "/assets/avatars/avatar-anika-visser.png",
