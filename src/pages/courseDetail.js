@@ -109,7 +109,7 @@ const Page = () => {
                     <CardContent>
                       <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
                         <Typography variant="h5">Course Name:</Typography>
-                        <Typography variant="h5">{courseDataFetched.courseTitle}</Typography>
+                        <Typography variant="h5" sx={{flexWrap:"wrap"}}>{courseDataFetched.courseTitle}</Typography>
                       </Paper>
                       <br />
                       <CoursePlayer url={playerLink} />
