@@ -9,7 +9,6 @@ import { getCourseContent } from "src/redux/actions";
 import PurchaseCourses from "src/sections/courses/purchaseCourses";
 import YourCourse from "src/sections/courses/yourCourse";
 
-
 const Page = () => {
   const dispatch = useDispatch();
   const { courseData, error, loading } = useSelector((state) => state.courseData);
@@ -54,7 +53,8 @@ const Page = () => {
               <Grid container spacing={3}>
                 {courseData.length == 0 ? (
                   <PurchaseCourses />
-                ) : (<YourCourse courseDataFetched={courseDataFetched}/>
+                ) : (
+                  <YourCourse courseDataFetched={courseDataFetched} />
                 )}
               </Grid>
             </div>
