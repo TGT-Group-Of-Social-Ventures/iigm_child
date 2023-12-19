@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import { Paper, Typography, Box, Button, Grid, Card, CardContent, Stack } from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -9,6 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import LockIcon from "@mui/icons-material/Lock";
 import CoursePlayer from "src/components/reactPlayer";
+import { flexbox } from "@mui/system";
 
 const containerStyle = {
   display: "flex",
@@ -18,9 +19,9 @@ const containerStyle = {
 
 const cardStyle = {
   display: "flex",
-  // maxWidth: "100%",
+  maxWidth: "100%",
   // padding: "24px",
-  // textAlign: "center",
+  textAlign: "center",
   boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
 };
 
@@ -52,9 +53,7 @@ const scrollableContainerStyle = {
 };
 
 const playerStyle = {
-  minWidth: "50px",
-  maxWidth: "50px",
-  // maxHeight:"30px"
+  display: "flex",
 };
 
 export default function YourCourse({ courseDataFetched }) {
@@ -70,7 +69,10 @@ export default function YourCourse({ courseDataFetched }) {
   return (
     <>
       <Grid xs={12} md={6} lg={6}>
-        <Card elevation={0} sx={cardStyle}>
+        <Card
+          elevation={0}
+          //  sx={cardStyle}
+        >
           <CardContent>
             <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
               <Typography variant="h5">Course Name:</Typography>
@@ -78,7 +80,6 @@ export default function YourCourse({ courseDataFetched }) {
             </Paper>
             <br />
             <CoursePlayer url={playerLink} />
-            <Grid style={playerStyle}></Grid>
             <br />
             <Grid container direction="column">
               <Typography variant="h6">Course Details</Typography>
@@ -108,7 +109,6 @@ export default function YourCourse({ courseDataFetched }) {
                       <Typography sx={{ width: "33%", flexShrink: 0 }}>Course Contents</Typography>
                       <Typography sx={{ color: "text.secondary" }}>
                         {courseDataFetched.courseContent.header}
-                        Test 3
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
