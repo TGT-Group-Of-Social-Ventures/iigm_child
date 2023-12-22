@@ -153,7 +153,7 @@ const Page = () => {
       <Dialog open={isDialogOpen} onClose={handleDialogClose}>
         <DialogTitle>Registration Successful</DialogTitle>
         <DialogContent>
-          <p>You've successfully registered. Login to continue.</p>
+          <p>You`&apos;`ve successfully registered. Login to continue.</p>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleDialogClose} color="primary" autoFocus>

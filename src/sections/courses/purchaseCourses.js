@@ -15,11 +15,11 @@ export default function PurchaseCourses() {
       <Box m="40px 0 0 0">
         <Container display={"flex"}>
           <Box textAlign="center">
-            <Typography variant="h6">You've not purchased any course.</Typography>
+            <Typography variant="h6">You`&apos;`ve not purchased any course.</Typography>
             <Button
               variant="contained"
               color="primary"
-              onClick={() => console.log('clicked')}
+              // onClick={() => console.log('clicked')}
               sx={{ marginTop: "16px" }}
             >
               Purchase Courses
