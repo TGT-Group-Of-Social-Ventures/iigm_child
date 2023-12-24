@@ -62,16 +62,21 @@ export const AccountProfileDetails = () => {
   }, []);
 
   return (
-    <form autoComplete="off" noValidate onSubmit={handleSubmit}>
+    <form autoComplete="off"
+noValidate
+onSubmit={handleSubmit}>
       {loading ? (
         <CircularProgress />
       ) : (
         <Card>
-          <CardHeader subheader="The information can be edited" title="Profile" />
+          <CardHeader subheader="The information can be edited"
+title="Profile" />
           <CardContent sx={{ pt: 0 }}>
             <Box sx={{ m: -1.5 }}>
-              <Grid container spacing={3}>
-                <Grid xs={12} md={6}>
+              <Grid container
+spacing={3}>
+                <Grid xs={12}
+md={6}>
                   <TextField
                     fullWidth
                     helperText="Please specify full name"
@@ -82,7 +87,8 @@ export const AccountProfileDetails = () => {
                     value={userData.name}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12}
+md={6}>
                   <TextField
                     fullWidth
                     label="Position"
@@ -92,7 +98,8 @@ export const AccountProfileDetails = () => {
                     value={userData.position}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12}
+md={6}>
                   <TextField
                     fullWidth
                     label="Email Address"
@@ -102,7 +109,8 @@ export const AccountProfileDetails = () => {
                     value={userData.email}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12}
+md={6}>
                   <TextField
                     fullWidth
                     label="Phone Number"
@@ -112,7 +120,8 @@ export const AccountProfileDetails = () => {
                     value={userData.phone}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12}
+md={6}>
                   <TextField
                     fullWidth
                     label="Country"
@@ -122,7 +131,8 @@ export const AccountProfileDetails = () => {
                     value={values.country}
                   />
                 </Grid>
-                <Grid xs={12} md={6}>
+                <Grid xs={12}
+md={6}>
                   <TextField
                     fullWidth
                     label="Select State"
@@ -134,7 +144,8 @@ export const AccountProfileDetails = () => {
                     value={values.state}
                   >
                     {states.map((option) => (
-                      <option key={option.value} value={option.value}>
+                      <option key={option.value}
+value={option.value}>
                         {option.label}
                       </option>
                     ))}

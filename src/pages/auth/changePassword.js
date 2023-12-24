@@ -99,12 +99,14 @@ const Page = ({}) => {
         {email}
       </div>
 
-      <Button onClick={() =>router.push("/auth/forgotPassword")} color="primary">
+      <Button onClick={() =>router.push("/auth/forgotPassword")}
+color="primary">
         Change Email Address
       </Button>
 
 
-      <form onSubmit={handlePasswordChange} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px' }}>
+      <form onSubmit={handlePasswordChange}
+style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '20px' }}>
         <TextField
           label="New Password"
           variant="outlined"
@@ -123,23 +125,31 @@ const Page = ({}) => {
           required
           margin="normal"
         />
-        <Button type="submit" variant="contained" color="primary" style={{ marginTop: '20px' }}>
+        <Button type="submit"
+variant="contained"
+color="primary"
+style={{ marginTop: '20px' }}>
           Update Password
         </Button>
       </form>
 
-      <Snackbar open={isSnackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity="success">
+      <Snackbar open={isSnackbarOpen}
+autoHideDuration={6000}
+onClose={handleCloseSnackbar}>
+        <Alert onClose={handleCloseSnackbar}
+severity="success">
           {snackbarMessage}
         </Alert>
       </Snackbar>
-      <Dialog open={isDialogOpen} onClose={handleCloseDialog}>
+      <Dialog open={isDialogOpen}
+onClose={handleCloseDialog}>
         <DialogTitle>Password Reset Successful</DialogTitle>
         <DialogContent>
           <p>Your password has been successfully updated. Please log in to continue.</p>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCloseDialog} color="primary">
+          <Button onClick={handleCloseDialog}
+color="primary">
             OK
           </Button>
         </DialogActions>

@@ -138,25 +138,34 @@ const Page = () => {
             required
             margin="normal"
           />
-          <Button type="submit" variant="contained" color="primary" style={{ marginTop: "20px" }}>
+          <Button type="submit"
+variant="contained"
+color="primary"
+style={{ marginTop: "20px" }}>
             Verify OTP
           </Button>
         </form>
       )}
 
-      <Snackbar open={isSnackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity={isVerificationSuccess ? "success" : "info"}>
+      <Snackbar open={isSnackbarOpen}
+autoHideDuration={6000}
+onClose={handleCloseSnackbar}>
+        <Alert onClose={handleCloseSnackbar}
+severity={isVerificationSuccess ? "success" : "info"}>
           {snackbarMessage}
         </Alert>
       </Snackbar>
 
-      <Dialog open={isDialogOpen} onClose={handleDialogClose}>
+      <Dialog open={isDialogOpen}
+onClose={handleDialogClose}>
         <DialogTitle>Registration Successful</DialogTitle>
         <DialogContent>
           <p>You`&apos;`ve successfully registered. Login to continue.</p>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose} color="primary" autoFocus>
+          <Button onClick={handleDialogClose}
+color="primary"
+autoFocus>
             OK
           </Button>
         </DialogActions>
