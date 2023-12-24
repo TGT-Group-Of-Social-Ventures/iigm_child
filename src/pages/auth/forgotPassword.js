@@ -97,7 +97,10 @@ const Page = () => {
             required
             margin="normal"
           />
-          <Button type="submit" variant="contained" color="primary" style={{ marginTop: "20px" }}>
+          <Button type="submit"
+variant="contained"
+color="primary"
+style={{ marginTop: "20px" }}>
             Send OTP
           </Button>
         </form>
@@ -122,14 +125,20 @@ const Page = () => {
             required
             margin="normal"
           />
-          <Button type="submit" variant="contained" color="primary" style={{ marginTop: "20px" }}>
+          <Button type="submit"
+variant="contained"
+color="primary"
+style={{ marginTop: "20px" }}>
             Verify OTP
           </Button>
         </form>
       )}
 
-      <Snackbar open={isSnackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity={isVerificationSuccess ? "success" : "info"}>
+      <Snackbar open={isSnackbarOpen}
+autoHideDuration={6000}
+onClose={handleCloseSnackbar}>
+        <Alert onClose={handleCloseSnackbar}
+severity={isVerificationSuccess ? "success" : "info"}>
           {snackbarMessage}
         </Alert>
       </Snackbar>

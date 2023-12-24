@@ -50,7 +50,8 @@ const Page = () => {
               <Typography variant="h4">CGF Course</Typography>
             </div>
             <div>
-              <Grid container spacing={3}>
+              <Grid container
+spacing={3}>
                 {courseData.length == 0 ? (
                   <PurchaseCourses />
                 ) : (

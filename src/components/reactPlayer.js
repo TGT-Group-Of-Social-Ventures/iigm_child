@@ -16,7 +16,9 @@ const CoursePlayer = ({ url }) => {
 
   return (
     <>
-      <Box width="100%" position="relative" paddingTop="56.25%">
+      <Box width="100%"
+position="relative"
+paddingTop="56.25%">
         {/* 56.25% is the aspect ratio for a 16:9 video */}
         <ReactPlayer
           url={url}
