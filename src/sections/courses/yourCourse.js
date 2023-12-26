@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
-import { Paper, Typography, Box, Button, Grid, Card, CardContent, Stack } from "@mui/material";
+import {
+  Paper,
+  Typography,
+  Box,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  Stack,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -59,6 +72,21 @@ const playerStyle = {
 export default function YourCourse({ courseDataFetched }) {
   const [expanded, setExpanded] = useState(false);
   const [playerLink, setPlayerLink] = useState(courseDataFetched.introVideo);
+  const [isLockedModalOpen, setIsLockedModalOpen] = useState(false);
+
+  const handleAccordionClick = (event, isDisabled) => {
+    event.preventDefault();
+    if (isDisabled) {
+      // If the module is locked, open the locked modal
+      setIsLockedModalOpen(true);
+    }
+  };
+
+  const handleCloseLockedModal = () => {
+    // Close the locked modal
+    setIsLockedModalOpen(false);
+  };
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -170,7 +198,9 @@ export default function YourCourse({ courseDataFetched }) {
                     </AccordionSummary>
                     <AccordionDetails>
                       {courseDataFetched.eligibilityCriteria.body.map((criteria, index) => (
-                          <Typography key={index}>{index+1}   {criteria}</Typography>
+                        <Typography key={index}>
+                          {index + 1} {criteria}
+                        </Typography>
                       ))}
                     </AccordionDetails>
                   </Accordion>
@@ -190,34 +220,36 @@ export default function YourCourse({ courseDataFetched }) {
               <Grid container spacing={3}>
                 {courseDataFetched.courseContents.map((course, index) => (
                   <Grid item xs={12} sm={12} key={index}>
-                    <Accordion disabled={course.disabled}>
-                      <AccordionSummary
-                        expandIcon={course.disabled ? <LockIcon /> : <ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                      >
-                        <Typography variant="h5">{course.courseTitle}</Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography>
-                          <p style={{ marginBottom: "8px" }}>{course.description}</p>
-                        </Typography>
-                        {course.sessionLink &&
-                          course.sessionLink.map((session, sessionIndex) => (
-                            <Typography variant="subtitle1" gutterBottom key={sessionIndex}>
-                              Lecture Link:{session}
-                              <button
-                                onClick={(e) => handleVideoPlay(e, session)}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                style={videoLinkStyle}
-                              >
-                                Start Lecture
-                              </button>
-                            </Typography>
-                          ))}
-                      </AccordionDetails>
-                    </Accordion>
+                    <div onClick={(e) => handleAccordionClick(e, course.disabled)}>
+                      <Accordion disabled={course.disabled}>
+                        <AccordionSummary
+                          expandIcon={course.disabled ? <LockIcon /> : <ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <Typography variant="h5">{course.courseTitle}</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography>
+                            <p style={{ marginBottom: "8px" }}>{course.description}</p>
+                          </Typography>
+                          {course.sessionLink &&
+                            course.sessionLink.map((session, sessionIndex) => (
+                              <Typography variant="subtitle1" gutterBottom key={sessionIndex}>
+                                Lecture Link:{session}
+                                <button
+                                  onClick={(e) => handleVideoPlay(e, session)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={videoLinkStyle}
+                                >
+                                  Start Lecture
+                                </button>
+                              </Typography>
+                            ))}
+                        </AccordionDetails>
+                      </Accordion>
+                    </div>
                   </Grid>
                 ))}
               </Grid>
@@ -225,6 +257,18 @@ export default function YourCourse({ courseDataFetched }) {
           </CardContent>
         </Card>
       </Grid>
+      <Dialog open={isLockedModalOpen} onClose={handleCloseLockedModal}>
+        <DialogTitle>Course is locked</DialogTitle>
+        <DialogContent>
+          {/* Customize the content of the locked modal here */}
+          <Typography variant="body1">
+            This module is locked as course is starting from 5th Jan 2024. Please purchase  to continue.
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseLockedModal}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
