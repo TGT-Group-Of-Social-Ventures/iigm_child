@@ -19,7 +19,7 @@ const user = {
   country: "India",
   jobTitle: "Senior Developer",
   name: "Anika Visser",
-  timezone: "GTM-7",
+  timezone: "GMT +05:30",
 };
 
 export const AccountProfile = () => {
