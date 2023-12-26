@@ -44,15 +44,14 @@ export const OverviewLatestOrders = (props) => {
                 <TableCell sortDirection="desc">
                   Date
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   Status
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
               {orders.map((order) => {
-                const createdAt = format(order.createdAt, 'dd/MM/yyyy');
-
+                const createdAt = format(order.createdAt, 'dd/MM/yyyy');  
                 return (
                   <TableRow
                     hover
@@ -67,11 +66,11 @@ export const OverviewLatestOrders = (props) => {
                     <TableCell>
                       {createdAt}
                     </TableCell>
-                    <TableCell>
+                    {/* <TableCell>
                       <SeverityPill color={statusMap[order.status]}>
                         {order.status}
                       </SeverityPill>
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 );
               })}
