@@ -38,33 +38,33 @@
   "courseContents": [
     {
       "courseTitle": "Introduction",
-      "lectureLink": "https://dl.dropboxusercontent.com/s/t05zdw2woogo4kh/ACW_3.mp4",
+      "sessionLink": ["",""],
       "description": "Description for Video 1. Sed ac urna vitae tortor congue pretium.",
-      "disabled": "false"
+      "disabled": false
     },
     {
       "courseTitle": "Setting Up the Business",
-      "lectureLink": "https://iigmavideos.s3.ap-south-1.amazonaws.com/y2mate.is%20-%20Commercial%20Vs%20Traditional-3rR5X6iir4w-1080pp-1703230803.mp4?response-content-disposition=inline&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEP7%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmFwLXNvdXRoLTEiRzBFAiA9Pd8u6TwmmiV%2Bq78k9FkDWKPL3hqkXUG3uBaELWM3hQIhANrXsNt6BJEY2exs9ydQpv3nn2HROPLMCocnsbGbLwY1Ku0CCIf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNDE3NjIzMzQ4NDYzIgx7ls%2Byujwg44IVJd0qwQJojK2%2B0hY6yC0ecIE%2F%2FZqc%2Fv8LH3NanFiD%2BjX5nfr6kElhZs8%2FSrSuSIkg5B4Z2x1RLaLasgX7odf3rlxL%2Ba%2BZvz7z8R0C38uRZaD6fx18GrUPmxjSy8QebhB1djr5BUnzH4pFQpidUOhv4BjTqCugPlWZ8mbPHuJATQ5M34A1DI9BgraAxB%2BuIvoRf6E4r1V8iX5tESiRrpY6CmTRn9vYikjKy3bZjcfyM01R1tRlr%2FbSyQY0BMT6US2XWhHJ8ZINlKxTm1j4s0QO%2FkqkqkWSKlR18nu9K3QUC%2Fx%2FixWU34WtWAVkaBRCEFN7mX%2FmqCBMdvlwcGNDGBCEJQG2ye5USrMcFqR4wrVakCBQkVXISC8bwXdRkOdylNpL9JzSbVLyf1LEc8h3ENaNXOznDUTcDBeTFbmppoUiUo1pazsfT74wmsmprAY6swKpFfuCl%2B%2BtTwupnIunvJsccTAK65Wi901NeXx3SPqtEFZhTsfsTD8QYNogLU%2BtPVzIC5ULSAU%2F%2FawoIDJ5SHrQiDBhNBBaS10MpMHMl%2F%2FhY3oqeaYyPcyH8j2FBOQo1Y2UFVQg8ymvtywmfngtSMrKuRD6TTaeg%2FZuyELqWhLgYRbisYIZFFNa4f6r%2BlD%2Fk99G3Dt%2FownfE0UcVUzDcs1%2FmkTHm%2Fe2cw7TU3J%2Bg%2BWI2FjBPU4UBVYp0mwvXG17yTc83Jh%2FkLhKeILOOMsfeAR4UJqYLgN5XeEVkum916zDFWFfIlQxbrXmseJD06N7g7Fi4s61735JaRNL5hKk6C72U2%2B3YWak5wdKZRe0hQ10WxOQylEwVPLr2x%2BPyyL5QJJ2WkUWHZcxUgHHvrHksoixGZtk&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20231226T054708Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAWCPCKSTX6JU3T6GB%2F20231226%2Fap-south-1%2Fs3%2Faws4_request&X-Amz-Signature=8ab10c8d6aa3a115d4dd9da92b2122381da9f6f5fba61c277e8d9f6514e83582",
+      "sessionLink": [""],
       "description": "Description for Video 2. Sed ac urna vitae tortor congue pretium.",
-      "disabled": "false"
+      "disabled": false
     },
     {
       "courseTitle": "Business and Farm Strategy",
-      "lectureLink": "",
+      "sessionLink": [""],
       "description": "Description for Video 3. Sed ac urna vitae tortor congue pretium.",
-      "disabled": "true"
+      "disabled": true
     },
     {
       "courseTitle": "Business and Farm Management",
-      "lectureLink": "",
+      "lectureLink": [""],
       "description": "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
-      "disabled": "true"
+      "disabled": true
     },
     {
         "courseTitle": "Schemes and Fund Management",
-        "lectureLink": "",
+        "lectureLink": [""],
         "description": "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
-        "disabled": "true"
+        "disabled": true
       }
   ]
 }

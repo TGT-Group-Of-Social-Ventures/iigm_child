@@ -188,9 +188,9 @@ export default function YourCourse({ courseDataFetched }) {
               <Grid container spacing={3}>
                 {courseDataFetched.courseContents.map((course, index) => (
                   <Grid item xs={12} sm={12} key={index}>
-                    <Accordion disabled={course.disabled === true ? true : false}>
+                    <Accordion disabled={course.disabled}>
                       <AccordionSummary
-                        expandIcon={course.disabled === true ? <LockIcon /> : <ExpandMoreIcon />}
+                        expandIcon={course.disabled ? <LockIcon /> : <ExpandMoreIcon />}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                       >
@@ -200,17 +200,20 @@ export default function YourCourse({ courseDataFetched }) {
                         <Typography>
                           <p style={{ marginBottom: "8px" }}>{course.description}</p>
                         </Typography>
-                        <Typography variant="subtitle1" gutterBottom>
-                          Lecture Link:{" "}
-                          <button
-                            onClick={(e) => handleVideoPlay(e, course.lectureLink)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={videoLinkStyle}
-                          >
-                            Start Lecture
-                          </button>
-                        </Typography>
+                        {course.sessionLink &&
+                          course.sessionLink.map((session, sessionIndex) => (
+                            <Typography variant="subtitle1" gutterBottom key={sessionIndex}>
+                              Lecture Link:{session}
+                              <button
+                                onClick={(e) => handleVideoPlay(e, session)}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={videoLinkStyle}
+                              >
+                                Start Lecture
+                              </button>
+                            </Typography>
+                          ))}
                       </AccordionDetails>
                     </Accordion>
                   </Grid>
