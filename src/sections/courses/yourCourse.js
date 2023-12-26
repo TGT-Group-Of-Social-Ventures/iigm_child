@@ -128,7 +128,7 @@ export default function YourCourse({ courseDataFetched }) {
                       <Typography>{courseDataFetched.courseOverview.body}</Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")}>
+                  {/* <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel2bh-content"
@@ -165,7 +165,7 @@ export default function YourCourse({ courseDataFetched }) {
                         </List>
                       </Typography>
                     </AccordionDetails>
-                  </Accordion>
+                  </Accordion> */}
                   <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
@@ -180,7 +180,10 @@ export default function YourCourse({ courseDataFetched }) {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>{courseDataFetched.otherInformation.body}</Typography>
+                      <Typography>
+                      {/* {courseDataFetched.otherInformation.body} */}
+                      Course material will be shared here on 5th Jan.
+                      </Typography>
                     </AccordionDetails>
                   </Accordion>
                   <Accordion expanded={expanded === "panel4"} onChange={handleChange("panel4")}>
