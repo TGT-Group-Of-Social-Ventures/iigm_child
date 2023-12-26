@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCourseContent } from "src/redux/actions";
 import PurchaseCourses from "src/sections/courses/purchaseCourses";
 import YourCourse from "src/sections/courses/yourCourse";
-
+import demoCourse from "src/mockData/demoCourse.json";
 const Page = () => {
   const dispatch = useDispatch();
   const { courseData, error, loading } = useSelector((state) => state.courseData);
@@ -50,10 +50,9 @@ const Page = () => {
               <Typography variant="h4">CGF Course</Typography>
             </div>
             <div>
-              <Grid container
-spacing={3}>
+              <Grid container spacing={3}>
                 {courseData.length == 0 ? (
-                  <PurchaseCourses />
+                  <YourCourse courseDataFetched={demoCourse}/>
                 ) : (
                   <YourCourse courseDataFetched={courseDataFetched} />
                 )}
