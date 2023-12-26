@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
-import { Paper, Typography, Box, Button, Grid, Card, CardContent, Stack } from "@mui/material";
+import {
+  Paper,
+  Typography,
+  Box,
+  Button,
+  Grid,
+  Card,
+  CardContent,
+  Stack,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -59,6 +72,21 @@ const playerStyle = {
 export default function YourCourse({ courseDataFetched }) {
   const [expanded, setExpanded] = useState(false);
   const [playerLink, setPlayerLink] = useState(courseDataFetched.introVideo);
+  const [isLockedModalOpen, setIsLockedModalOpen] = useState(false);
+
+  const handleAccordionClick = (event, isDisabled) => {
+    event.preventDefault();
+    if (isDisabled) {
+      // If the module is locked, open the locked modal
+      setIsLockedModalOpen(true);
+    }
+  };
+
+  const handleCloseLockedModal = () => {
+    // Close the locked modal
+    setIsLockedModalOpen(false);
+  };
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -68,29 +96,24 @@ export default function YourCourse({ courseDataFetched }) {
   };
   return (
     <>
-      <Grid xs={12}
-md={6}
-lg={6}>
+      <Grid xs={12} md={6} lg={6}>
         <Card
           elevation={0}
           //  sx={cardStyle}
         >
           <CardContent>
-            <Paper sx={{ width: "100%", display: "flex" }}
-elevation={0}>
+            <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
               <Typography variant="h5">Course Name:</Typography>
               <Typography variant="h5">{courseDataFetched.courseTitle}</Typography>
             </Paper>
             <br />
             <CoursePlayer url={playerLink} />
             <br />
-            <Grid container
-direction="column">
+            <Grid container direction="column">
               <Typography variant="h6">Course Details</Typography>
               <Box>
                 <div>
-                  <Accordion expanded={expanded === "panel1"}
-onChange={handleChange("panel1")}>
+                  <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1bh-content"
@@ -105,8 +128,7 @@ onChange={handleChange("panel1")}>
                       <Typography>{courseDataFetched.courseOverview.body}</Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion expanded={expanded === "panel2"}
-onChange={handleChange("panel2")}>
+                  <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel2bh-content"
@@ -144,8 +166,7 @@ onChange={handleChange("panel2")}>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion expanded={expanded === "panel3"}
-onChange={handleChange("panel3")}>
+                  <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel3bh-content"
@@ -162,8 +183,7 @@ onChange={handleChange("panel3")}>
                       <Typography>{courseDataFetched.otherInformation.body}</Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion expanded={expanded === "panel4"}
-onChange={handleChange("panel4")}>
+                  <Accordion expanded={expanded === "panel4"} onChange={handleChange("panel4")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel4bh-content"
@@ -177,7 +197,11 @@ onChange={handleChange("panel4")}>
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>{courseDataFetched.eligibilityCriteria.body[0]}</Typography>
+                      {courseDataFetched.eligibilityCriteria.body.map((criteria, index) => (
+                        <Typography key={index}>
+                          {index + 1} {criteria}
+                        </Typography>
+                      ))}
                     </AccordionDetails>
                   </Accordion>
                 </div>
@@ -186,49 +210,46 @@ onChange={handleChange("panel4")}>
           </CardContent>
         </Card>
       </Grid>
-      <Grid xs={12}
-md={6}
-lg={6}>
+      <Grid xs={12} md={6} lg={6}>
         <Card elevation={0}>
           <CardContent>
-            <Paper sx={{ width: "100%", display: "flex" }}
-elevation={0}>
+            <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
               <Typography variant="h6">Course Content:</Typography>
             </Paper>
             <div style={scrollableContainerStyle}>
-              <Grid container
-spacing={3}>
+              <Grid container spacing={3}>
                 {courseDataFetched.courseContents.map((course, index) => (
-                  <Grid item
-xs={12}
-sm={12}
-key={index}>
-                    <Accordion disabled={course.disabled === true ? true : false}>
-                      <AccordionSummary
-                        expandIcon={course.disabled === true ? <LockIcon /> : <ExpandMoreIcon />}
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                      >
-                        <Typography variant="h5">{course.courseTitle}</Typography>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        <Typography>
-                          <p style={{ marginBottom: "8px" }}>{course.description}</p>
-                        </Typography>
-                        <Typography variant="subtitle1"
-gutterBottom>
-                          Lecture Link:{" "}
-                          <button
-                            onClick={(e) => handleVideoPlay(e, course.lectureLink)}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={videoLinkStyle}
-                          >
-                            Start Lecture
-                          </button>
-                        </Typography>
-                      </AccordionDetails>
-                    </Accordion>
+                  <Grid item xs={12} sm={12} key={index}>
+                    <div onClick={(e) => handleAccordionClick(e, course.disabled)}>
+                      <Accordion disabled={course.disabled}>
+                        <AccordionSummary
+                          expandIcon={course.disabled ? <LockIcon /> : <ExpandMoreIcon />}
+                          aria-controls="panel1a-content"
+                          id="panel1a-header"
+                        >
+                          <Typography variant="h5">{course.courseTitle}</Typography>
+                        </AccordionSummary>
+                        <AccordionDetails>
+                          <Typography>
+                            <p style={{ marginBottom: "8px" }}>{course.description}</p>
+                          </Typography>
+                          {course.sessionLink &&
+                            course.sessionLink.map((session, sessionIndex) => (
+                              <Typography variant="subtitle1" gutterBottom key={sessionIndex}>
+                                Lecture Link:{session}
+                                <button
+                                  onClick={(e) => handleVideoPlay(e, session)}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  style={videoLinkStyle}
+                                >
+                                  Start Lecture
+                                </button>
+                              </Typography>
+                            ))}
+                        </AccordionDetails>
+                      </Accordion>
+                    </div>
                   </Grid>
                 ))}
               </Grid>
@@ -236,6 +257,20 @@ gutterBottom>
           </CardContent>
         </Card>
       </Grid>
+      <Dialog open={isLockedModalOpen} onClose={handleCloseLockedModal}>
+        <DialogTitle>Course is locked</DialogTitle>
+        <DialogContent>
+          {/* Customize the content of the locked modal here */}
+          <Typography variant="body1">
+            This module is locked as course is starting from 5th Jan 2024. If not Enrolled, Enroll
+            Now to start course.
+          </Typography>
+          <a href="https://forms.gle/EFZ7sqa18MXtkJxJ9">Enrollment Link</a>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseLockedModal}>Close</Button>
+        </DialogActions>
+      </Dialog>
     </>
   );
 }
