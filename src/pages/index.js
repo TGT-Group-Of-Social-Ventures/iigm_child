@@ -149,7 +149,7 @@ const Page = () => (
           <Grid
             xs={12}
             md={12}
-            lg={8}
+            lg={12}
           >
             <OverviewLatestOrders
               orders={[
