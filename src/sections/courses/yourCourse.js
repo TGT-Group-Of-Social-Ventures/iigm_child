@@ -169,7 +169,9 @@ export default function YourCourse({ courseDataFetched }) {
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography>{courseDataFetched.eligibilityCriteria.body[0]}</Typography>
+                      {courseDataFetched.eligibilityCriteria.body.map((criteria, index) => (
+                          <Typography key={index}>{index+1}   {criteria}</Typography>
+                      ))}
                     </AccordionDetails>
                   </Accordion>
                 </div>

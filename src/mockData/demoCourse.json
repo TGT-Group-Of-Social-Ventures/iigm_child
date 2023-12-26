@@ -33,7 +33,7 @@
   },
   "eligibilityCriteria": {
     "header": "Check If You Are Eligible For This Course",
-    "body": ["Detail1", "Detail2", "Detail3", "Detail4"]
+    "body": ["Should be at least 12th Pass", "Recommended that Candidate owns or has a minimum Land for establishing Goat Farm", "Should have working Smartphone and 4G Network"]
   },
   "courseContents": [
     {
@@ -46,7 +46,7 @@
       "courseTitle": "Setting Up the Business",
       "sessionLink": [""],
       "description": "Description for Video 2. Sed ac urna vitae tortor congue pretium.",
-      "disabled": false
+      "disabled": true
     },
     {
       "courseTitle": "Business and Farm Strategy",
