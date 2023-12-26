@@ -29,30 +29,29 @@ export const OverviewLatestOrders = (props) => {
 
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest Orders" />
+      <CardHeader title="Latest News" />
       <Scrollbar sx={{ flexGrow: 1 }}>
         <Box sx={{ minWidth: 800 }}>
           <Table>
             <TableHead>
               <TableRow>
                 <TableCell>
-                  Order
+                  News ID
                 </TableCell>
                 <TableCell>
-                  Customer
+                  News
                 </TableCell>
                 <TableCell sortDirection="desc">
                   Date
                 </TableCell>
-                <TableCell>
+                {/* <TableCell>
                   Status
-                </TableCell>
+                </TableCell> */}
               </TableRow>
             </TableHead>
             <TableBody>
               {orders.map((order) => {
-                const createdAt = format(order.createdAt, 'dd/MM/yyyy');
-
+                const createdAt = format(order.createdAt, 'dd/MM/yyyy');  
                 return (
                   <TableRow
                     hover
@@ -67,11 +66,11 @@ export const OverviewLatestOrders = (props) => {
                     <TableCell>
                       {createdAt}
                     </TableCell>
-                    <TableCell>
+                    {/* <TableCell>
                       <SeverityPill color={statusMap[order.status]}>
                         {order.status}
                       </SeverityPill>
-                    </TableCell>
+                    </TableCell> */}
                   </TableRow>
                 );
               })}
@@ -80,7 +79,7 @@ export const OverviewLatestOrders = (props) => {
         </Box>
       </Scrollbar>
       <Divider />
-      <CardActions sx={{ justifyContent: 'flex-end' }}>
+      {/* <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Button
           color="inherit"
           endIcon={(
@@ -93,7 +92,7 @@ export const OverviewLatestOrders = (props) => {
         >
           View all
         </Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 };
