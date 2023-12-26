@@ -18,15 +18,15 @@ export const items = [
       </SvgIcon>
     )
   },
-  {
-    title: 'Batchmates',
-    path: '/customers',
-    icon: (
-      <SvgIcon fontSize="small">
-        <UsersIcon />
-      </SvgIcon>
-    )
-  },
+  // {
+  //   title: 'Batchmates',
+  //   path: '/customers',
+  //   icon: (
+  //     <SvgIcon fontSize="small">
+  //       <UsersIcon />
+  //     </SvgIcon>
+  //   )
+  // },
   {
     title: 'Course',
     path: '/courseDetail',
