@@ -262,8 +262,10 @@ export default function YourCourse({ courseDataFetched }) {
         <DialogContent>
           {/* Customize the content of the locked modal here */}
           <Typography variant="body1">
-            This module is locked as course is starting from 5th Jan 2024. Please purchase  to continue.
+            This module is locked as course is starting from 5th Jan 2024. If not Enrolled, Enroll
+            Now to start course.
           </Typography>
+          <a href="https://forms.gle/EFZ7sqa18MXtkJxJ9">Enrollment Link</a>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleCloseLockedModal}>Close</Button>
