@@ -17,20 +17,20 @@ import { getAllUserDetails } from "src/redux/actions";
 
 const states = [
   {
-    value: "alabama",
-    label: "Alabama",
+    value: "uttar pradesh",
+    label: "Uttar Pradesh",
   },
   {
-    value: "new-york",
-    label: "New York",
+    value: "madhya pradesh",
+    label: "Madhya Pradesh",
   },
   {
-    value: "san-francisco",
-    label: "San Francisco",
+    value: "Bihar",
+    label: "Bihar",
   },
   {
-    value: "los-angeles",
-    label: "Los Angeles",
+    value: "west bengal",
+    label: "West Bengal",
   },
 ];
 
@@ -47,7 +47,7 @@ export const AccountProfileDetails = () => {
     email: "demo@devias.io",
     phone: "",
     state: "los-angeles",
-    country: "USA",
+    country: "India",
   });
 
   const handleChange = useCallback((event) => {
