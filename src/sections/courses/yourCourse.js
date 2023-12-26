@@ -68,29 +68,24 @@ export default function YourCourse({ courseDataFetched }) {
   };
   return (
     <>
-      <Grid xs={12}
-md={6}
-lg={6}>
+      <Grid xs={12} md={6} lg={6}>
         <Card
           elevation={0}
           //  sx={cardStyle}
         >
           <CardContent>
-            <Paper sx={{ width: "100%", display: "flex" }}
-elevation={0}>
+            <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
               <Typography variant="h5">Course Name:</Typography>
               <Typography variant="h5">{courseDataFetched.courseTitle}</Typography>
             </Paper>
             <br />
             <CoursePlayer url={playerLink} />
             <br />
-            <Grid container
-direction="column">
+            <Grid container direction="column">
               <Typography variant="h6">Course Details</Typography>
               <Box>
                 <div>
-                  <Accordion expanded={expanded === "panel1"}
-onChange={handleChange("panel1")}>
+                  <Accordion expanded={expanded === "panel1"} onChange={handleChange("panel1")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel1bh-content"
@@ -105,8 +100,7 @@ onChange={handleChange("panel1")}>
                       <Typography>{courseDataFetched.courseOverview.body}</Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion expanded={expanded === "panel2"}
-onChange={handleChange("panel2")}>
+                  <Accordion expanded={expanded === "panel2"} onChange={handleChange("panel2")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel2bh-content"
@@ -144,8 +138,7 @@ onChange={handleChange("panel2")}>
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion expanded={expanded === "panel3"}
-onChange={handleChange("panel3")}>
+                  <Accordion expanded={expanded === "panel3"} onChange={handleChange("panel3")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel3bh-content"
@@ -162,8 +155,7 @@ onChange={handleChange("panel3")}>
                       <Typography>{courseDataFetched.otherInformation.body}</Typography>
                     </AccordionDetails>
                   </Accordion>
-                  <Accordion expanded={expanded === "panel4"}
-onChange={handleChange("panel4")}>
+                  <Accordion expanded={expanded === "panel4"} onChange={handleChange("panel4")}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
                       aria-controls="panel4bh-content"
@@ -186,23 +178,16 @@ onChange={handleChange("panel4")}>
           </CardContent>
         </Card>
       </Grid>
-      <Grid xs={12}
-md={6}
-lg={6}>
+      <Grid xs={12} md={6} lg={6}>
         <Card elevation={0}>
           <CardContent>
-            <Paper sx={{ width: "100%", display: "flex" }}
-elevation={0}>
+            <Paper sx={{ width: "100%", display: "flex" }} elevation={0}>
               <Typography variant="h6">Course Content:</Typography>
             </Paper>
             <div style={scrollableContainerStyle}>
-              <Grid container
-spacing={3}>
+              <Grid container spacing={3}>
                 {courseDataFetched.courseContents.map((course, index) => (
-                  <Grid item
-xs={12}
-sm={12}
-key={index}>
+                  <Grid item xs={12} sm={12} key={index}>
                     <Accordion disabled={course.disabled === true ? true : false}>
                       <AccordionSummary
                         expandIcon={course.disabled === true ? <LockIcon /> : <ExpandMoreIcon />}
@@ -215,8 +200,7 @@ key={index}>
                         <Typography>
                           <p style={{ marginBottom: "8px" }}>{course.description}</p>
                         </Typography>
-                        <Typography variant="subtitle1"
-gutterBottom>
+                        <Typography variant="subtitle1" gutterBottom>
                           Lecture Link:{" "}
                           <button
                             onClick={(e) => handleVideoPlay(e, course.lectureLink)}
