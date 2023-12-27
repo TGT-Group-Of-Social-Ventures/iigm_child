@@ -115,6 +115,7 @@ const Page = () => {
                   href="/auth/register"
                   underline="hover"
                   variant="subtitle2"
+                  style={{ fontSize: '1.2rem' }}
                 >
                   Register
                 </Link>
