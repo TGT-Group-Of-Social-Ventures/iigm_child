@@ -276,7 +276,6 @@ export default function YourCourse({ courseDataFetched }) {
                     </div>
                   </Grid>
                 ))}
-              </Grid>
               <button
                 style={{ alignSelf : "center" ,margin: 20, color: "#002147", backgroundColor: "#fdc800", border : "none" , borderRadius : 10 , padding : 20, fontSize : 20, cursor : "pointer" }}
                 onClick={(e) => {
@@ -285,6 +284,7 @@ export default function YourCourse({ courseDataFetched }) {
               >
                 Enroll in This Course
               </button>
+              </Grid>
             </div>
           </CardContent>
         </Card>
