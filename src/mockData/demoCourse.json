@@ -33,13 +33,17 @@
   },
   "eligibilityCriteria": {
     "header": "Check If You Are Eligible For This Course",
-    "body": ["Should be at least 12th Pass", "Recommended that Candidate owns or has a minimum Land for establishing Goat Farm", "Should have working Smartphone and 4G Network"]
+    "body": [
+      "Should be at least 12th Pass",
+      "Recommended that Candidate owns or has a minimum Land for establishing Goat Farm",
+      "Should have working Smartphone and 4G Network"
+    ]
   },
   "courseContents": [
     {
       "courseTitle": "Introduction",
-      "sessionLink": ["MyVideo1.mp4",""],
-      "description": "Description for Video 1. Sed ac urna vitae tortor congue pretium.",
+      "sessionLink": ["MyVideo1.mp4", "opportunitiesandchallenges.mp4"],
+      "description": "Know all about Course Content and key topics and their relevance for todays commercial goat farmer. Understand the key areas to think about before venturing into commercial goat farming.",
       "disabled": false
     },
     {
@@ -61,10 +65,10 @@
       "disabled": true
     },
     {
-        "courseTitle": "Schemes and Fund Management",
-        "lectureLink": [""],
-        "description": "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
-        "disabled": true
-      }
+      "courseTitle": "Schemes and Fund Management",
+      "lectureLink": [""],
+      "description": "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
+      "disabled": true
+    }
   ]
 }
