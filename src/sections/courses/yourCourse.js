@@ -73,7 +73,7 @@ const playerStyle = {
 export default function YourCourse({ courseDataFetched }) {
   const [expanded, setExpanded] = useState(false);
   const [playerLink, setPlayerLink] = useState(
-    "https://www.dropbox.com/scl/fi/lfkeym9vaadlssk5gv6bd/pppppppp.mp4?rlkey=kj8xbdhf34vwl69l65hjcwko6&dl=1"
+    "https://www.dropbox.com/scl/fi/uehsd0oexczu0web1su8p/My-Video1.mp4?rlkey=mtzemje5v1d525j1onpueb1ol&dl=1"
   );
   const [isLockedModalOpen, setIsLockedModalOpen] = useState(false);
 
