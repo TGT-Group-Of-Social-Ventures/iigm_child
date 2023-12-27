@@ -72,7 +72,9 @@ const playerStyle = {
 
 export default function YourCourse({ courseDataFetched }) {
   const [expanded, setExpanded] = useState(false);
-  const [playerLink, setPlayerLink] = useState("https://www.dropbox.com/scl/fi/lfkeym9vaadlssk5gv6bd/pppppppp.mp4?rlkey=kj8xbdhf34vwl69l65hjcwko6&dl=1");
+  const [playerLink, setPlayerLink] = useState(
+    "https://www.dropbox.com/scl/fi/lfkeym9vaadlssk5gv6bd/pppppppp.mp4?rlkey=kj8xbdhf34vwl69l65hjcwko6&dl=1"
+  );
   const [isLockedModalOpen, setIsLockedModalOpen] = useState(false);
 
   const handleAccordionClick = (event, isDisabled) => {
@@ -95,7 +97,9 @@ export default function YourCourse({ courseDataFetched }) {
     event.preventDefault();
     try {
       console.log(link);
-      const response = await axios.get(`https://backend.iigminstitute.com/api/video/getSignedURL?videoKey=${link}`);
+      const response = await axios.get(
+        `https://backend.iigminstitute.com/api/video/getSignedURL?videoKey=${link}`
+      );
       const data = await response.data;
       // Set the signed URL in the state
       setPlayerLink(data.signedUrl);
@@ -104,6 +108,13 @@ export default function YourCourse({ courseDataFetched }) {
       // Handle error appropriately
     }
   };
+
+  const handleRegistrationLink = async (e) => {
+    const googleFormUrl =
+      "https://docs.google.com/forms/d/e/1FAIpQLSdR7U0HipoGZJuTmr2RM9mBpVqx6-wgt-qI1GJwNJcluXKE5Q/viewform";
+    window.open(googleFormUrl, "_blank");
+  };
+
   return (
     <>
       <Grid xs={12} md={6} lg={6}>
@@ -266,6 +277,14 @@ export default function YourCourse({ courseDataFetched }) {
                   </Grid>
                 ))}
               </Grid>
+              <button
+                style={{ alignSelf : "center" ,margin: 20, color: "#002147", backgroundColor: "#fdc800", border : "none" , borderRadius : 10 , padding : 20, fontSize : 20, cursor : "pointer" }}
+                onClick={(e) => {
+                  handleRegistrationLink(e);
+                }}
+              >
+                Enroll in This Course
+              </button>
             </div>
           </CardContent>
         </Card>
