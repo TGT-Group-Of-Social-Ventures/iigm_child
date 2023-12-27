@@ -23,6 +23,7 @@ import ListItemText from "@mui/material/ListItemText";
 import LockIcon from "@mui/icons-material/Lock";
 import CoursePlayer from "src/components/reactPlayer";
 import { flexbox } from "@mui/system";
+import axios from "axios";
 
 const containerStyle = {
   display: "flex",
@@ -92,7 +93,16 @@ export default function YourCourse({ courseDataFetched }) {
   };
   const handleVideoPlay = async (event, link) => {
     event.preventDefault();
-    setPlayerLink(link);
+    try {
+      console.log(link);
+      const response = await axios.get(`https://backend.iigminstitute.com/api/video/getSignedURL?videoKey=${link}`);
+      const data = await response.data;
+      // Set the signed URL in the state
+      setPlayerLink(data.signedUrl);
+    } catch (error) {
+      console.error("Error fetching signed URL:", error);
+      // Handle error appropriately
+    }
   };
   return (
     <>
@@ -181,8 +191,8 @@ export default function YourCourse({ courseDataFetched }) {
                     </AccordionSummary>
                     <AccordionDetails>
                       <Typography>
-                      {/* {courseDataFetched.otherInformation.body} */}
-                      Course material will be shared here on 5th Jan.
+                        {/* {courseDataFetched.otherInformation.body} */}
+                        Course material will be shared here on 5th Jan.
                       </Typography>
                     </AccordionDetails>
                   </Accordion>
@@ -239,7 +249,7 @@ export default function YourCourse({ courseDataFetched }) {
                           {course.sessionLink &&
                             course.sessionLink.map((session, sessionIndex) => (
                               <Typography variant="subtitle1" gutterBottom key={sessionIndex}>
-                                Lecture Link:{session}
+                                Lecture Link:
                                 <button
                                   onClick={(e) => handleVideoPlay(e, session)}
                                   target="_blank"
