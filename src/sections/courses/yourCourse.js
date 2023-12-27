@@ -72,7 +72,7 @@ const playerStyle = {
 
 export default function YourCourse({ courseDataFetched }) {
   const [expanded, setExpanded] = useState(false);
-  const [playerLink, setPlayerLink] = useState(courseDataFetched.introVideo);
+  const [playerLink, setPlayerLink] = useState("https://www.dropbox.com/scl/fi/lfkeym9vaadlssk5gv6bd/pppppppp.mp4?rlkey=kj8xbdhf34vwl69l65hjcwko6&dl=1");
   const [isLockedModalOpen, setIsLockedModalOpen] = useState(false);
 
   const handleAccordionClick = (event, isDisabled) => {
