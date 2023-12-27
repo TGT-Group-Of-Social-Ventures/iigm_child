@@ -249,7 +249,7 @@ export default function YourCourse({ courseDataFetched }) {
                           {course.sessionLink &&
                             course.sessionLink.map((session, sessionIndex) => (
                               <Typography variant="subtitle1" gutterBottom key={sessionIndex}>
-                                Lecture Link:
+                                Session Link:
                                 <button
                                   onClick={(e) => handleVideoPlay(e, session)}
                                   target="_blank"
