@@ -285,6 +285,8 @@ export default function YourCourse({ courseDataFetched }) {
                 Enroll in This Course
               </button>
               </Grid>
+              Ignore if already enrolled.
+
             </div>
           </CardContent>
         </Card>
