@@ -1,8 +1,21 @@
 import { Box, Button, Card, Grid } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 
 const CoursePlayer = ({ url }) => {
+  const handleContextMenu = (e) => {
+    // Prevent the default right-click behavior
+    e.preventDefault();
+  };
+  useEffect(() => {
+    // Add event listener when the component mounts
+    document.addEventListener("contextmenu", handleContextMenu);
+
+    // Remove event listener when the component unmounts
+    return () => {
+      document.removeEventListener("contextmenu", handleContextMenu);
+    };
+  }, []);
   // const [currentStream, setCurrentStream] = useState(false);
   // console.log(url);
   const playerConfig = {
