@@ -23,6 +23,7 @@ const user = {
 };
 
 export const AccountProfile = () => {
+  console.log('hi');
   const dispatch = useDispatch();
   const { userData, error, loading } = useSelector((state) => state.data);
 
