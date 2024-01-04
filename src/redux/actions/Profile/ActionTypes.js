@@ -1,1 +1,2 @@
 export const PROFILE = 'PROFILE'
+export const PROFILE_UPDATE = 'PROFILE_UPDATE'

@@ -38,9 +38,6 @@ export const AccountProfileDetails = () => {
   const dispatch = useDispatch();
   const { userData, error, loading } = useSelector((state) => state.data);
 
-  useEffect(() => {
-    dispatch(getAllUserDetails());
-  }, [dispatch]);
   const [values, setValues] = useState({
     firstName: "Anika",
     lastName: "Visser",
@@ -49,6 +46,13 @@ export const AccountProfileDetails = () => {
     state: "los-angeles",
     country: "India",
   });
+
+  useEffect(() => {
+    dispatch(getAllUserDetails());
+    if (userData) {
+      setValues(userData);
+    }
+  }, [dispatch]);
 
   const handleChange = useCallback((event) => {
     setValues((prevState) => ({
@@ -62,21 +66,16 @@ export const AccountProfileDetails = () => {
   }, []);
 
   return (
-    <form autoComplete="off"
-noValidate
-onSubmit={handleSubmit}>
+    <form autoComplete="off" noValidate onSubmit={handleSubmit}>
       {loading ? (
         <CircularProgress />
       ) : (
         <Card>
-          <CardHeader subheader="The information can be edited"
-title="Profile" />
+          <CardHeader subheader="The information can be edited" title="Profile" />
           <CardContent sx={{ pt: 0 }}>
             <Box sx={{ m: -1.5 }}>
-              <Grid container
-spacing={3}>
-                <Grid xs={12}
-md={6}>
+              <Grid container spacing={3}>
+                <Grid xs={12} md={6}>
                   <TextField
                     fullWidth
                     helperText="Please specify full name"
@@ -87,8 +86,7 @@ md={6}>
                     value={userData.name}
                   />
                 </Grid>
-                <Grid xs={12}
-md={6}>
+                <Grid xs={12} md={6}>
                   <TextField
                     fullWidth
                     label="Position"
@@ -98,8 +96,7 @@ md={6}>
                     value={userData.position}
                   />
                 </Grid>
-                <Grid xs={12}
-md={6}>
+                <Grid xs={12} md={6}>
                   <TextField
                     fullWidth
                     label="Email Address"
@@ -109,8 +106,7 @@ md={6}>
                     value={userData.email}
                   />
                 </Grid>
-                <Grid xs={12}
-md={6}>
+                <Grid xs={12} md={6}>
                   <TextField
                     fullWidth
                     label="Phone Number"
@@ -120,8 +116,7 @@ md={6}>
                     value={userData.phone}
                   />
                 </Grid>
-                <Grid xs={12}
-md={6}>
+                <Grid xs={12} md={6}>
                   <TextField
                     fullWidth
                     label="Country"
@@ -131,8 +126,7 @@ md={6}>
                     value={values.country}
                   />
                 </Grid>
-                <Grid xs={12}
-md={6}>
+                <Grid xs={12} md={6}>
                   <TextField
                     fullWidth
                     label="Select State"
@@ -144,8 +138,7 @@ md={6}>
                     value={values.state}
                   >
                     {states.map((option) => (
-                      <option key={option.value}
-value={option.value}>
+                      <option key={option.value} value={option.value}>
                         {option.label}
                       </option>
                     ))}

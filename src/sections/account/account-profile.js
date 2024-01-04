@@ -23,6 +23,7 @@ const user = {
 };
 
 export const AccountProfile = () => {
+  console.log("hi");
   const dispatch = useDispatch();
   const { userData, error, loading } = useSelector((state) => state.data);
 
@@ -48,24 +49,20 @@ export const AccountProfile = () => {
               width: 80,
             }}
           />
-          <Typography gutterBottom
-variant="h5">
+          <Typography gutterBottom variant="h5">
             {userData.name}
           </Typography>
-          <Typography color="text.secondary"
-variant="body2">
+          <Typography color="text.secondary" variant="body2">
             {userData.location} {user.country}
           </Typography>
-          <Typography color="text.secondary"
-variant="body2">
+          <Typography color="text.secondary" variant="body2">
             {user.timezone}
           </Typography>
         </Box>
       </CardContent>
       <Divider />
       <CardActions>
-        <Button fullWidth
-variant="text">
+        <Button fullWidth variant="text">
           Upload picture
         </Button>
       </CardActions>
