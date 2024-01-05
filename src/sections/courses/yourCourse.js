@@ -257,36 +257,53 @@ export default function YourCourse({ courseDataFetched }) {
                           <Typography>
                             <p style={{ marginBottom: "8px" }}>{course.description}</p>
                           </Typography>
-                          {course.sessionLink &&
-                            course.sessionLink.map((session, sessionIndex) => (
-                              <Typography variant="subtitle1" gutterBottom key={sessionIndex}>
-                                Session Link:
-                                <button
-                                  onClick={(e) => handleVideoPlay(e, session)}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  style={videoLinkStyle}
-                                >
-                                  Start Lecture
-                                </button>
-                              </Typography>
+                          {course.session &&
+                            course.session.map((value, sessionIndex) => (
+                              <div key={sessionIndex}>
+                                <Typography variant="subtitle1" gutterBottom>
+                                  {value.sessionName}
+                                </Typography>
+                                <Grid>
+                                  {value.sessionLink.map((link, index) => (
+                                    <button
+                                      onClick={(e) => handleVideoPlay(e, link)}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      style={videoLinkStyle}
+                                      key={index}
+                                    >
+                                      Start Lecture
+                                    </button>
+                                  ))}
+                                </Grid>
+                              </div>
                             ))}
                         </AccordionDetails>
                       </Accordion>
                     </div>
                   </Grid>
                 ))}
-              <button
-                style={{ alignSelf : "center" ,margin: 20, color: "#002147", backgroundColor: "#fdc800", border : "none" , borderRadius : 10 , padding : 20, fontSize : 20, cursor : "pointer" }}
-                onClick={(e) => {
-                  handleRegistrationLink(e);
-                }}
-              >
-                Enroll in This Course
-              </button>
+
+                <button
+                  style={{
+                    alignSelf: "center",
+                    margin: 20,
+                    color: "#002147",
+                    backgroundColor: "#fdc800",
+                    border: "none",
+                    borderRadius: 10,
+                    padding: 20,
+                    fontSize: 20,
+                    cursor: "pointer",
+                  }}
+                  onClick={(e) => {
+                    handleRegistrationLink(e);
+                  }}
+                >
+                  Enroll in This Course
+                </button>
               </Grid>
               Ignore if already enrolled.
-
             </div>
           </CardContent>
         </Card>

@@ -42,6 +42,12 @@
   "courseContents": [
     {
       "courseTitle": "Introduction",
+      "session": [
+        {
+          "sessionName": "Introduction and Course Module",
+          "sessionLink": ["pppppppp.mp4"]
+        }
+      ],
       "sessionLink": ["pppppppp.mp4"],
       "description": "Know all about Course Content and key topics and their relevance for todays commercial goat farmer. Understand the key areas to think about before venturing into commercial goat farming.",
       "disabled": false
@@ -49,24 +55,48 @@
     {
       "courseTitle": "Setting Up the Business",
       "sessionLink": [""],
+      "session": [
+        {
+          "sessionName": "",
+          "sessionLink": [""]
+        }
+      ],
       "description": "Description for Video 2. Sed ac urna vitae tortor congue pretium.",
       "disabled": true
     },
     {
       "courseTitle": "Business and Farm Strategy",
       "sessionLink": [""],
+      "session": [
+        {
+          "sessionName": "",
+          "sessionLink": [""]
+        }
+      ],
       "description": "Description for Video 3. Sed ac urna vitae tortor congue pretium.",
       "disabled": true
     },
     {
       "courseTitle": "Business and Farm Management",
       "lectureLink": [""],
+      "session": [
+        {
+          "sessionName": "",
+          "sessionLink": [""]
+        }
+      ],
       "description": "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
       "disabled": true
     },
     {
       "courseTitle": "Schemes and Fund Management",
       "lectureLink": [""],
+      "session": [
+        {
+          "sessionName": "",
+          "sessionLink": [""]
+        }
+      ],
       "description": "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
       "disabled": true
     }
