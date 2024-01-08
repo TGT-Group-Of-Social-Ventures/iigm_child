@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef,forwardRef} from "react";
 import Accordion from "@mui/material/Accordion";
 import {
   Paper,
@@ -71,6 +71,7 @@ const playerStyle = {
 };
 
 export default function YourCourse({ courseDataFetched }) {
+  const playerRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const [playerLink, setPlayerLink] = useState(
     "https://www.dropbox.com/scl/fi/uehsd0oexczu0web1su8p/My-Video1.mp4?rlkey=mtzemje5v1d525j1onpueb1ol&dl=1"
@@ -96,16 +97,18 @@ export default function YourCourse({ courseDataFetched }) {
   const handleVideoPlay = async (event, link) => {
     event.preventDefault();
     try {
-      console.log(link);
+      // console.log(link);
       const response = await axios.get(
         `https://backend.iigminstitute.com/api/video/getSignedURL?videoKey=${link}`
       );
       const data = await response.data;
       // Set the signed URL in the state
       setPlayerLink(data.signedUrl);
+      if (playerRef.current) {
+        playerRef.current.scrollIntoView({ behavior: "smooth" });
+      }
     } catch (error) {
       console.error("Error fetching signed URL:", error);
-      // Handle error appropriately
     }
   };
 
@@ -128,7 +131,7 @@ export default function YourCourse({ courseDataFetched }) {
               <Typography variant="h5">{courseDataFetched.courseTitle}</Typography>
             </Paper>
             <br />
-            <CoursePlayer url={playerLink} />
+            <CoursePlayer ref={playerRef} url={playerLink} />
             <br />
             <Grid container direction="column">
               <Typography variant="h6">Course Details</Typography>

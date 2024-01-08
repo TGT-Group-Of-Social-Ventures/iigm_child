@@ -1,8 +1,8 @@
 import { Box, Button, Card, Grid } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,forwardRef} from "react";
 import ReactPlayer from "react-player";
 
-const CoursePlayer = ({ url }) => {
+const CoursePlayer = React.forwardRef(({ url }, ref) => {
   const handleContextMenu = (e) => {
     // Prevent the default right-click behavior
     e.preventDefault();
@@ -29,7 +29,7 @@ const CoursePlayer = ({ url }) => {
 
   return (
     <>
-      <Box width="100%" position="relative" paddingTop="56.25%">
+      <Box ref={ref} width="100%" position="relative" paddingTop="56.25%">
         {/* 56.25% is the aspect ratio for a 16:9 video */}
         <ReactPlayer
           url={url}
@@ -42,6 +42,6 @@ const CoursePlayer = ({ url }) => {
       </Box>
     </>
   );
-};
+});
 
 export default CoursePlayer;
