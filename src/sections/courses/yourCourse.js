@@ -74,7 +74,7 @@ export default function YourCourse({ courseDataFetched }) {
   const playerRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const [playerLink, setPlayerLink] = useState(
-    "https://www.dropbox.com/scl/fi/uehsd0oexczu0web1su8p/My-Video1.mp4?rlkey=mtzemje5v1d525j1onpueb1ol&dl=1"
+    "https://www.dropbox.com/scl/fi/ktp7qjg9fkt1mh8qo4lrl/opportunitiesandchallenges.mp4?rlkey=64cwosef0of599zq1egorpkc7&dl=1"
   );
   const [isLockedModalOpen, setIsLockedModalOpen] = useState(false);
 
@@ -296,7 +296,7 @@ export default function YourCourse({ courseDataFetched }) {
         <DialogContent>
           {/* Customize the content of the locked modal here */}
           <Typography variant="body1">
-            This module is locked as course is starting from 5th Jan 2024. If not Enrolled, Enroll
+            This module is locked and will unlock next week. If not Enrolled, Enroll
             Now to start course.
           </Typography>
           <a href="https://forms.gle/EFZ7sqa18MXtkJxJ9">Enrollment Link</a>
