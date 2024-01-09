@@ -39,7 +39,7 @@ const Page = () => (
             />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
-            <OverviewTasksProgress sx={{ height: "100%" }} value={0} />
+            <OverviewTasksProgress sx={{ height: "100%" }} value={5} />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
             <OverviewTotalProfit sx={{ height: "100%" }} value="4" />
