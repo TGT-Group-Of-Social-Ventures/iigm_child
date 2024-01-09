@@ -1,4 +1,4 @@
-import React, { useState, useRef,forwardRef} from "react";
+import React, { useState, useRef,forwardRef, useEffect} from "react";
 import Accordion from "@mui/material/Accordion";
 import {
   Paper,
@@ -73,10 +73,14 @@ const playerStyle = {
 export default function YourCourse({ courseDataFetched }) {
   const playerRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
-  const [playerLink, setPlayerLink] = useState(
-    "https://www.dropbox.com/scl/fi/uehsd0oexczu0web1su8p/My-Video1.mp4?rlkey=mtzemje5v1d525j1onpueb1ol&dl=1"
-  );
+  const [playerLink, setPlayerLink] = useState("");
   const [isLockedModalOpen, setIsLockedModalOpen] = useState(false);
+
+    useEffect(()=>{
+      if(courseDataFetched){
+        setPlayerLink(courseDataFetched.introVideo)
+      }
+    },[])
 
   const handleAccordionClick = (event, isDisabled) => {
     event.preventDefault();
