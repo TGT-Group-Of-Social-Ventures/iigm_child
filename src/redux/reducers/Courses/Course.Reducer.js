@@ -1,73 +1,115 @@
 import { COURSES } from "../../actions/Courses/ActionTypes";
 
-const courseDataMock = [{
-  courseTitle: "Test",
-  id: "IIGM",
-  totalVideos: "30",
-  watchingHours: "10 hours",
-  introVideo:
-    "https://www.dropbox.com/scl/fi/bg83rgw1xjihpe615eqr6/TGTIntroductionVideo-Dev-Purpose.mp4?rlkey=dxh39zxqe7ffyaxt0sfukyu0m&dl=0",
-  description: "Course on goat healthcare",
-  department: "IIGMA",
-  price: "5000",
-  thumbnail:
-    "https://www.open.edu/openlearn/pluginfile.php/3277384/tool_ocwmanage/articletext/0/become_a_student_inline.jpg",
-  descriptionSummary:
-    "Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text.",
-  courseDetails:
-    "Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text.",
-  courseTopics: [
-    "couresTopic",
-    "couresTopic",
-    "couresTopic",
-    "couresTopic",
-    "couresTopic",
-    "couresTopic",
-    "couresTopic",
-  ],
-  courseOverview: {
-    header: "Introduction to Goat Management",
-    body: "The Course Focuses on Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
-  },
-  courseContent: {
-    header: "View All The Course Contents Here",
-    body: ["Chapter1", "Chapter2", "Chapter3"],
-  },
-  otherInformation: {
-    header: "Other Course Related Information",
-    body: "Other Important Notices and Information Related to the Course. Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
-  },
-  eligibilityCriteria: {
-    header: "Check If You Are Eligible For This Course",
-    body: ["Detail1", "Detail2", "Detail3", "Detail4"],
-  },
-  courseContents: [
-    {
-      courseTitle: "Sub Heading1",
-      lectureLink: "https://dl.dropboxusercontent.com/s/t05zdw2woogo4kh/ACW_3.mp4",
-      description: "Description for Video 1. Sed ac urna vitae tortor congue pretium.",
-      disabled: "false",
+const courseDataMock = [
+  {
+    courseTitle: "Commercial Goat Farming",
+    id: "CGF-DEMO",
+    totalVideos: "30",
+    watchingHours: "10 hours",
+    introVideo: "https://www.dropbox.com/scl/fi/uehsd0oexczu0web1su8p/My-Video1.mp4?rlkey=mtzemje5v1d525j1onpueb1ol&dl=1",
+    description: "Course on goat healthcare",
+    department: "IIGMA",
+    price: "5000",
+    thumbnail:
+      "https://www.open.edu/openlearn/pluginfile.php/3277384/tool_ocwmanage/articletext/0/become_a_student_inline.jpg",
+    descriptionSummary:
+      "Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text.",
+    courseDetails:
+      "Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text. Course Demo Text.",
+    courseTopics: [
+      "couresTopic",
+      "couresTopic",
+      "couresTopic",
+      "couresTopic",
+      "couresTopic",
+      "couresTopic",
+      "couresTopic",
+    ],
+    courseOverview: {
+      header: "Commercial Goat Farming",
+      body: "The three months programme is designed to prepare aspiring commercial goat farmers or Experienced Professionals looking to explore livestock based projects.",
     },
-    {
-      courseTitle: "Sub Heading2",
-      lectureLink: "",
-      description: "Description for Video 2. Sed ac urna vitae tortor congue pretium.",
-      disabled: "false",
+    courseContent: {
+      header: "View All The Course Contents Here",
+      body: ["Chapter1", "Chapter2", "Chapter3"],
     },
-    {
-      courseTitle: "Sub Heading3",
-      lectureLink: "",
-      description: "Description for Video 3. Sed ac urna vitae tortor congue pretium.",
-      disabled: "true",
+    otherInformation: {
+      header: "Other Course Related Information",
+      body: "Other Important Notices and Information Related to the Course. Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text",
     },
-    {
-      courseTitle: "Sub Heading4",
-      lectureLink: "",
-      description: "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
-      disabled: "true",
+    eligibilityCriteria: {
+      header: "Check If You Are Eligible For This Course",
+      body: [
+        "Should be at least 12th Pass",
+        "Recommended that Candidate owns or has a minimum Land for establishing Goat Farm",
+        "Should have working Smartphone and 4G Network",
+      ],
     },
-  ],
-}];
+    courseContents: [
+      {
+        courseTitle: "Introduction",
+        session: [
+          {
+            sessionName: "Introduction and Course Module",
+            sessionLink: ["pppppppp.mp4"],
+          },
+        ],
+        sessionLink: ["pppppppp.mp4"],
+        description:
+          "Know all about Course Content and key topics and their relevance for todays commercial goat farmer. Understand the key areas to think about before venturing into commercial goat farming.",
+        disabled: false,
+      },
+      {
+        courseTitle: "Setting Up the Business",
+        sessionLink: [""],
+        session: [
+          {
+            sessionName: "Introduction and Course Module",
+            sessionLink: ["pppppppp.mp4"],
+          },
+        ],
+        description: "Description for Video 2. Sed ac urna vitae tortor congue pretium.",
+        disabled: true,
+      },
+      {
+        courseTitle: "Business and Farm Strategy",
+        sessionLink: [""],
+        session: [
+          {
+            sessionName: "Introduction and Course Module",
+            sessionLink: ["pppppppp.mp4"],
+          },
+        ],
+        description: "Description for Video 3. Sed ac urna vitae tortor congue pretium.",
+        disabled: true,
+      },
+      {
+        courseTitle: "Business and Farm Management",
+        lectureLink: [""],
+        session: [
+          {
+            sessionName: "",
+            sessionLink: [""],
+          },
+        ],
+        description: "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
+        disabled: true,
+      },
+      {
+        courseTitle: "Schemes and Fund Management",
+        lectureLink: [""],
+        session: [
+          {
+            sessionName: "",
+            sessionLink: [""],
+          },
+        ],
+        description: "Description for Video 4. Sed ac urna vitae tortor congue pretium.",
+        disabled: true,
+      },
+    ],
+  },
+];
 
 const initialState = {
   courseData: courseDataMock,

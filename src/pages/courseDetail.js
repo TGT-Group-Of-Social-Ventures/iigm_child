@@ -12,7 +12,6 @@ import demoCourse from "src/mockData/demoCourse.json";
 const Page = () => {
   const dispatch = useDispatch();
   const { courseData, error, loading } = useSelector((state) => state.courseData);
-  // console.log("sht", courseData);
   const courseDataFetched = courseData[0];
   const [userMail, setUserMail] = useState("");
 

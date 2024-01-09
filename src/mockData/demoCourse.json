@@ -3,7 +3,7 @@
   "id": "CGF-DEMO",
   "totalVideos": "30",
   "watchingHours": "10 hours",
-  "introVideo": "https://www.dropbox.com/scl/fi/lfkeym9vaadlssk5gv6bd/pppppppp.mp4?rlkey=kj8xbdhf34vwl69l65hjcwko6&dl=1",
+  "introVideo": "https://www.dropbox.com/scl/fi/uehsd0oexczu0web1su8p/My-Video1.mp4?rlkey=mtzemje5v1d525j1onpueb1ol&dl=1",
   "description": "Course on goat healthcare",
   "department": "IIGMA",
   "price": "5000",
@@ -57,8 +57,8 @@
       "sessionLink": [""],
       "session": [
         {
-          "sessionName": "",
-          "sessionLink": [""]
+          "sessionName": "Introduction and Course Module",
+          "sessionLink": ["pppppppp.mp4"]
         }
       ],
       "description": "Description for Video 2. Sed ac urna vitae tortor congue pretium.",
@@ -69,8 +69,8 @@
       "sessionLink": [""],
       "session": [
         {
-          "sessionName": "",
-          "sessionLink": [""]
+          "sessionName": "Introduction and Course Module",
+          "sessionLink": ["pppppppp.mp4"]
         }
       ],
       "description": "Description for Video 3. Sed ac urna vitae tortor congue pretium.",
