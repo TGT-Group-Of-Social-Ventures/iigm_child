@@ -22,9 +22,9 @@ const companies = [
     id: "2569ce0d517a7f06d3ea1f24",
     createdAt: "27/03/2019",
     description:
-      "This is the Flagship course of IIGMA. Be employment ready with a 6 months rigorous module on all facets of Livestock Entrepreneurship and Business Management.",
+      "The courses imparts a focussed specialization perspective, which enables students to view the entirety of a livestock based enterprise and scope for scaling and managing operations.",
     logo: "/assets/logos/logo-dropbox.png",
-    title: "CGF",
+    title: "Commercial Goat Farming",
     downloads: "15 Students Enrolled",
     href: "/courseDetail",
   },
@@ -34,7 +34,7 @@ const companies = [
     description:
       "This training is for the professionals who are directly engaged in Livestock based Project Management in Non Profit as well as Startups.",
     logo: "/assets/logos/logo-medium.png",
-    title: "Livestock based livelihood project management",
+    title: "Livestock Based Livelihood Project Management",
     downloads: "Coming Soon",
     href: "/companies",
   },
