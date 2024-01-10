@@ -1,7 +1,8 @@
-import Head from 'next/head';
-import ArrowUpOnSquareIcon from '@heroicons/react/24/solid/ArrowUpOnSquareIcon';
-import ArrowDownOnSquareIcon from '@heroicons/react/24/solid/ArrowDownOnSquareIcon';
-import PlusIcon from '@heroicons/react/24/solid/PlusIcon';
+import Head from "next/head";
+import ArrowUpOnSquareIcon from "@heroicons/react/24/solid/ArrowUpOnSquareIcon";
+import ArrowDownOnSquareIcon from "@heroicons/react/24/solid/ArrowDownOnSquareIcon";
+import PlusIcon from "@heroicons/react/24/solid/PlusIcon";
+import Link from "next/link";
 import {
   Box,
   Button,
@@ -10,37 +11,43 @@ import {
   Stack,
   SvgIcon,
   Typography,
-  Unstable_Grid2 as Grid
-} from '@mui/material';
-import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { CompanyCard } from 'src/sections/companies/company-card';
-import { CompaniesSearch } from 'src/sections/companies/companies-search';
+  Unstable_Grid2 as Grid,
+} from "@mui/material";
+import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
+import { CompanyCard } from "src/sections/companies/company-card";
+import { CompaniesSearch } from "src/sections/companies/companies-search";
 
 const companies = [
   {
-    id: '2569ce0d517a7f06d3ea1f24',
-    createdAt: '27/03/2019',
-    description: 'This is the Flagship course of IIGMA. Be employment ready with a 6 months rigorous module on all facets of Livestock Entrepreneurship and Business Management.',
-    logo: '/assets/logos/logo-dropbox.png',
-    title: 'CGF',
-    downloads: '15 Students Enrolled'
+    id: "2569ce0d517a7f06d3ea1f24",
+    createdAt: "27/03/2019",
+    description:
+      "This is the Flagship course of IIGMA. Be employment ready with a 6 months rigorous module on all facets of Livestock Entrepreneurship and Business Management.",
+    logo: "/assets/logos/logo-dropbox.png",
+    title: "CGF",
+    downloads: "15 Students Enrolled",
+    href: "/courseDetail",
   },
   {
-    id: 'ed2b900870ceba72d203ec15',
-    createdAt: '31/03/2019',
-    description: 'Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.',
-    logo: '/assets/logos/logo-medium.png',
-    title: 'Livestock based livelihood project management',
-    downloads: 'Coming Soon'
+    id: "ed2b900870ceba72d203ec15",
+    createdAt: "31/03/2019",
+    description:
+      "Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.",
+    logo: "/assets/logos/logo-medium.png",
+    title: "Livestock based livelihood project management",
+    downloads: "Coming Soon",
+    href: "/companies",
   },
   {
-    id: 'a033e38768c82fca90df3db7',
-    createdAt: '03/04/2019',
-    description: 'Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.',
-    logo: '/assets/logos/logo-slack.png',
-    title: 'Livestock business counselors self certification course',
-    downloads: 'Coming soon'
-  }
+    id: "a033e38768c82fca90df3db7",
+    createdAt: "03/04/2019",
+    description:
+      "Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.",
+    logo: "/assets/logos/logo-slack.png",
+    title: "Livestock business counselors self certification course",
+    downloads: "Coming soon",
+    href: "/companies"
+  },
   // {
   //   id: '1efecb2bf6a51def9869ab0f',
   //   createdAt: '04/04/2019',
@@ -70,15 +77,13 @@ const companies = [
 const Page = () => (
   <>
     <Head>
-      <title>
-        Courses | IIGM
-      </title>
+      <title>Courses | IIGM</title>
     </Head>
     <Box
       component="main"
       sx={{
         flexGrow: 1,
-        py: 8
+        py: 8,
       }}
     >
       <Container maxWidth="xl">
@@ -133,18 +138,12 @@ const Page = () => (
             </div>
           </Stack> */}
           {/* <CompaniesSearch /> */}
-          <Grid
-            container
-            spacing={3}
-          >
+          <Grid container spacing={3}>
             {companies.map((company) => (
-              <Grid
-                xs={12}
-                md={6}
-                lg={4}
-                key={company.id}
-              >
-                <CompanyCard company={company} />
+              <Grid xs={12} md={6} lg={4} key={company.id}>
+                <Link style={{textDecoration : "none"}} href={company.href} passHref>
+                    <CompanyCard company={company} />
+                </Link>
               </Grid>
             ))}
           </Grid>
@@ -165,10 +164,6 @@ const Page = () => (
   </>
 );
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;
