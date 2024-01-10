@@ -28,7 +28,7 @@ export const items = [
   //   )
   // },
   {
-    title: 'Course',
+    title: 'Courses',
     path: '/companies',
     icon: (
       <SvgIcon fontSize="small">
