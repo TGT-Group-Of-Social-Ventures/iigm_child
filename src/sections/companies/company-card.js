@@ -66,7 +66,7 @@ export const CompanyCard = (props) => {
             display="inline"
             variant="body2"
           >
-            Updated 2hr ago
+            Updated 0hr ago
           </Typography>
         </Stack>
         <Stack
@@ -85,7 +85,7 @@ export const CompanyCard = (props) => {
             display="inline"
             variant="body2"
           >
-            {company.downloads} Downloads
+            {company.downloads}
           </Typography>
         </Stack>
       </Stack>
