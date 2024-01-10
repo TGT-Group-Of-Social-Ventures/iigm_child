@@ -32,7 +32,7 @@ const companies = [
     id: "ed2b900870ceba72d203ec15",
     createdAt: "31/03/2019",
     description:
-      "Medium is an online publishing platform developed by Evan Williams, and launched in August 2012.",
+      "This training is for the professionals who are directly engaged in Livestock based Project Management in Non Profit as well as Startups.",
     logo: "/assets/logos/logo-medium.png",
     title: "Livestock based livelihood project management",
     downloads: "Coming Soon",
@@ -42,9 +42,9 @@ const companies = [
     id: "a033e38768c82fca90df3db7",
     createdAt: "03/04/2019",
     description:
-      "Slack is a cloud-based set of team collaboration tools and services, founded by Stewart Butterfield.",
+      "Livestock Business Counsellors Self Certification Course is for Women aspiring to pursue Livestock based Entrepreneurship providing First Aid services",
     logo: "/assets/logos/logo-slack.png",
-    title: "Livestock business counselors self certification course",
+    title: "Livestock Business Counselors Self Certification Course",
     downloads: "Coming soon",
     href: "/companies"
   },
