@@ -199,7 +199,7 @@ const Page = () => {
     <>
       <Head>
         <title>
-          Batchmates | IIGM
+          Batchmates | IIGMA
         </title>
       </Head>
       <Box

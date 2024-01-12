@@ -77,7 +77,7 @@ const companies = [
 const Page = () => (
   <>
     <Head>
-      <title>Courses | IIGM</title>
+      <title>Courses | IIGMA</title>
     </Head>
     <Box
       component="main"

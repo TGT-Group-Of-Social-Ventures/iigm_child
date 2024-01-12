@@ -76,7 +76,7 @@ const Page = () => {
     <>
       <Head>
         <title>
-          Login | IIGM Online
+          Login | IIGMA Online
         </title>
       </Head>
       <Box

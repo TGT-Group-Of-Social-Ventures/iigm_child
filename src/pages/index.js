@@ -16,7 +16,7 @@ const now = new Date();
 const Page = () => (
   <>
     <Head>
-      <title>Overview | IIGM</title>
+      <title>Overview | IIGMA</title>
     </Head>
     <Box
       component="main"

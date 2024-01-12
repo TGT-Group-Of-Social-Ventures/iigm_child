@@ -33,7 +33,7 @@ const Page = () => {
   return (
     <>
       <Head>
-        <title>Course || IIGM</title>
+        <title>Course || IIGMA</title>
       </Head>
       <Box
         component="main"

@@ -9,7 +9,7 @@ const Page = () => (
   <>
     <Head>
       <title>
-        Account | IIGM
+        Account | IIGMA
       </title>
     </Head>
     <Box

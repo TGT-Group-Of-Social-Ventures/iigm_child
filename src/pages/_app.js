@@ -31,7 +31,7 @@ const App = (props) => {
     <CacheProvider value={emotionCache}>
       <Head>
         <title>
-          IIGM Online
+          IIGMA Online
         </title>
         <meta
           name="viewport"
