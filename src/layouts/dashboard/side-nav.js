@@ -71,7 +71,7 @@ export const SideNav = (props) => {
                 color="inherit"
                 variant="subtitle1"
               >
-                IIGM Online
+                IIGMA Online
               </Typography>
               <Typography
                 color="neutral.400"
