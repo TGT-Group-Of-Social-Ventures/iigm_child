@@ -45,7 +45,7 @@ const Page = () => {
         <Container maxWidth="lg">
           <Stack spacing={3}>
             <div>
-              <Typography variant="h4">CGF Course</Typography>
+              <Typography variant="h4">IIGMA Online</Typography>
             </div>
             <div>
               <Grid container spacing={3}>
