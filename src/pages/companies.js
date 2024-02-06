@@ -46,7 +46,7 @@ const companies = [
     logo: "/assets/logos/logo-slack.png",
     title: "Livestock Business Counselors Self Certification Course",
     downloads: "Coming soon",
-    href: "/companies"
+    href: "/companies",
   },
   // {
   //   id: '1efecb2bf6a51def9869ab0f',
@@ -79,6 +79,17 @@ const Page = () => (
     <Head>
       <title>Courses | IIGMA</title>
     </Head>
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    {/* Google Tag Manager */}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRSP7CL2CQ"></script>
+    <script>
+      {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HRSP7CL2CQ');
+    `}
+    </script>
     <Box
       component="main"
       sx={{
@@ -141,8 +152,8 @@ const Page = () => (
           <Grid container spacing={3}>
             {companies.map((company) => (
               <Grid xs={12} md={6} lg={4} key={company.id}>
-                <Link style={{textDecoration : "none"}} href={company.href} passHref>
-                    <CompanyCard company={company} />
+                <Link style={{ textDecoration: "none" }} href={company.href} passHref>
+                  <CompanyCard company={company} />
                 </Link>
               </Grid>
             ))}
