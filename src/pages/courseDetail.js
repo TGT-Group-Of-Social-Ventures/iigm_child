@@ -35,6 +35,17 @@ const Page = () => {
       <Head>
         <title>Course || IIGMA</title>
       </Head>
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
+      {/* Google Tag Manager */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRSP7CL2CQ"></script>
+      <script>
+        {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HRSP7CL2CQ');
+    `}
+      </script>
       <Box
         component="main"
         sx={{
@@ -50,7 +61,7 @@ const Page = () => {
             <div>
               <Grid container spacing={3}>
                 {courseData.length == 0 ? (
-                  <YourCourse courseDataFetched={demoCourse}/>
+                  <YourCourse courseDataFetched={demoCourse} />
                 ) : (
                   <YourCourse courseDataFetched={courseDataFetched} />
                 )}

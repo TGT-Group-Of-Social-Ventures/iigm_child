@@ -1,48 +1,44 @@
-import Head from 'next/head';
-import { Box, Container, Stack, Typography, Unstable_Grid2 as Grid } from '@mui/material';
-import { Layout as DashboardLayout } from 'src/layouts/dashboard/layout';
-import { AccountProfile } from 'src/sections/account/account-profile';
-import { AccountProfileDetails } from 'src/sections/account/account-profile-details';
-import { useProfile } from 'src/hooks/use-profile';
+import Head from "next/head";
+import { Box, Container, Stack, Typography, Unstable_Grid2 as Grid } from "@mui/material";
+import { Layout as DashboardLayout } from "src/layouts/dashboard/layout";
+import { AccountProfile } from "src/sections/account/account-profile";
+import { AccountProfileDetails } from "src/sections/account/account-profile-details";
+import { useProfile } from "src/hooks/use-profile";
 
 const Page = () => (
   <>
     <Head>
-      <title>
-        Account | IIGMA
-      </title>
+      <title>Account | IIGMA</title>
     </Head>
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    {/* Google Tag Manager */}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRSP7CL2CQ"></script>
+    <script>
+      {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HRSP7CL2CQ');
+    `}
+    </script>
     <Box
       component="main"
       sx={{
         flexGrow: 1,
-        py: 8
+        py: 8,
       }}
     >
       <Container maxWidth="lg">
         <Stack spacing={3}>
           <div>
-            <Typography variant="h4">
-              Account
-            </Typography>
+            <Typography variant="h4">Account</Typography>
           </div>
           <div>
-            <Grid
-              container
-              spacing={3}
-            >
-              <Grid
-                xs={12}
-                md={6}
-                lg={4}
-              >
+            <Grid container spacing={3}>
+              <Grid xs={12} md={6} lg={4}>
                 <AccountProfile />
               </Grid>
-              <Grid
-                xs={12}
-                md={6}
-                lg={8}
-              >
+              <Grid xs={12} md={6} lg={8}>
                 <AccountProfileDetails />
               </Grid>
             </Grid>
@@ -53,10 +49,6 @@ const Page = () => (
   </>
 );
 
-Page.getLayout = (page) => (
-  <DashboardLayout>
-    {page}
-  </DashboardLayout>
-);
+Page.getLayout = (page) => <DashboardLayout>{page}</DashboardLayout>;
 
 export default Page;
