@@ -1,16 +1,16 @@
-import Head from 'next/head';
-import { CacheProvider } from '@emotion/react';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { CssBaseline } from '@mui/material';
-import { ThemeProvider } from '@mui/material/styles';
-import { AuthConsumer, AuthProvider } from 'src/contexts/auth-context';
-import { useNProgress } from 'src/hooks/use-nprogress';
-import { createTheme } from 'src/theme';
-import { createEmotionCache } from 'src/utils/create-emotion-cache';
-import { Provider } from 'react-redux';
-import store from 'src/redux/store';
-import 'simplebar-react/dist/simplebar.min.css';
+import Head from "next/head";
+import { CacheProvider } from "@emotion/react";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { CssBaseline } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import { AuthConsumer, AuthProvider } from "src/contexts/auth-context";
+import { useNProgress } from "src/hooks/use-nprogress";
+import { createTheme } from "src/theme";
+import { createEmotionCache } from "src/utils/create-emotion-cache";
+import { Provider } from "react-redux";
+import store from "src/redux/store";
+import "simplebar-react/dist/simplebar.min.css";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -18,8 +18,6 @@ const SplashScreen = () => null;
 
 const App = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
-
-
 
   useNProgress();
 
@@ -30,13 +28,18 @@ const App = (props) => {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>
-          IIGMA Online
-        </title>
-        <meta
-          name="viewport"
-          content="initial-scale=1, width=device-width"
-        />
+        <title>IIGMA Online</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        {/* Google Tag Manager */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-HRSP7CL2CQ"></script>
+        <script>
+          {`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HRSP7CL2CQ');
+    `}
+        </script>
       </Head>
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <Provider store={store}>
@@ -44,10 +47,8 @@ const App = (props) => {
             <ThemeProvider theme={theme}>
               <CssBaseline />
               <AuthConsumer>
-                {
-                  (auth) => auth.isLoading
-                    ? <SplashScreen />
-                    : getLayout(<Component {...pageProps} />)
+                {(auth) =>
+                  auth.isLoading ? <SplashScreen /> : getLayout(<Component {...pageProps} />)
                 }
               </AuthConsumer>
             </ThemeProvider>
