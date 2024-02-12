@@ -126,12 +126,12 @@ export const AuthProvider = (props) => {
     });
   };
 
-  const signIn = async (email, password) => {
-    // if (email !== 'demo@devias.io' || password !== 'Password123!') {
-    //   throw new Error('Please check your email and password');
-    // }
+  const signIn = async (email, password,role) => {
 
     try {
+      const studentLoginURL = "https://backend.iigminstitute.com/api/auth/login";
+      const otherURL = "";
+      const baseURL = role === 'student' ? studentLoginURL : otherURL;
       const response = await axios.post("https://backend.iigminstitute.com/api/auth/login", {
         email,
         password,
