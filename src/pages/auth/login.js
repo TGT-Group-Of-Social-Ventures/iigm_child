@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, useEffect } from "react";
 import Head from "next/head";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
@@ -24,6 +24,26 @@ const Page = () => {
   const auth = useAuth();
   const [method, setMethod] = useState("email");
   const [role, setRole] = useState("student");
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        autoDisplay: false,
+      },
+      "google_translate_element"
+    );
+  };
+
+  useEffect(() => {
+    var addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       // email: 'demo@devias.io',
@@ -36,7 +56,7 @@ const Page = () => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await auth.signIn(values.email, values.password,role);
+        await auth.signIn(values.email, values.password, role);
         router.push("/");
       } catch (err) {
         helpers.setStatus({ success: false });
@@ -64,6 +84,7 @@ const Page = () => {
       <Head>
         <title>Login | IIGMA Online</title>
       </Head>
+
       <Box
         sx={{
           backgroundColor: "background.paper",
@@ -81,6 +102,7 @@ const Page = () => {
             width: "100%",
           }}
         >
+          <div id="google_translate_element"></div>
           <div>
             <Stack spacing={1} sx={{ mb: 3 }}>
               <Typography variant="h4">Login</Typography>
