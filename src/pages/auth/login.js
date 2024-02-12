@@ -1,9 +1,9 @@
-import { useCallback, useState } from 'react';
-import Head from 'next/head';
-import NextLink from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
+import { useCallback, useState, useEffect } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { useRouter } from "next/navigation";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import {
   Alert,
   Box,
@@ -14,15 +14,36 @@ import {
   Tab,
   Tabs,
   TextField,
-  Typography
-} from '@mui/material';
-import { useAuth } from 'src/hooks/use-auth';
-import { Layout as AuthLayout } from 'src/layouts/auth/layout';
+  Typography,
+} from "@mui/material";
+import { useAuth } from "src/hooks/use-auth";
+import { Layout as AuthLayout } from "src/layouts/auth/layout";
 
 const Page = () => {
   const router = useRouter();
   const auth = useAuth();
-  const [method, setMethod] = useState('email');
+  const [method, setMethod] = useState("email");
+  const [role, setRole] = useState("student");
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        autoDisplay: false,
+      },
+      "google_translate_element"
+    );
+  };
+
+  useEffect(() => {
+    var addScript = document.createElement("script");
+    addScript.setAttribute(
+      "src",
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+    );
+    document.body.appendChild(addScript);
+    window.googleTranslateElementInit = googleTranslateElementInit;
+  }, []);
+
   const formik = useFormik({
     initialValues: {
       // email: 'demo@devias.io',
@@ -30,122 +51,87 @@ const Page = () => {
       // submit: null
     },
     validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email('Must be a valid email')
-        .max(255)
-        .required('Email is required'),
-      password: Yup
-        .string()
-        .max(255)
-        .required('Password is required')
+      email: Yup.string().email("Must be a valid email").max(255).required("Email is required"),
+      password: Yup.string().max(255).required("Password is required"),
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await auth.signIn(values.email, values.password);
-        router.push('/');
+        await auth.signIn(values.email, values.password, role);
+        router.push("/");
       } catch (err) {
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });
         helpers.setSubmitting(false);
       }
-    }
+    },
   });
 
-  const handleMethodChange = useCallback(
-    (event, value) => {
-      setMethod(value);
-    },
-    []
-  );
+  const handleMethodChange = useCallback((event, value) => {
+    setMethod(value);
+  }, []);
 
-  const handleSkip = useCallback(
-    () => {
-      auth.skip();
-      router.push('/');
-    },
-    [auth, router]
-  );
+  const handleRoleChange = useCallback((event, value) => {
+    setRole(value);
+  }, []);
 
-  const handleForgotPassword = async(e)=> {
+  const handleForgotPassword = async (e) => {
     e.preventDefault();
-    router.push('/auth/forgotPassword')
-  }
+    router.push("/auth/forgotPassword");
+  };
 
   return (
     <>
       <Head>
-        <title>
-          Login | IIGMA Online
-        </title>
+        <title>Login | IIGMA Online</title>
       </Head>
+
       <Box
         sx={{
-          backgroundColor: 'background.paper',
-          flex: '1 1 auto',
-          alignItems: 'center',
-          display: 'flex',
-          justifyContent: 'center'
+          backgroundColor: "background.paper",
+          flex: "1 1 auto",
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "center",
         }}
       >
         <Box
           sx={{
             maxWidth: 550,
             px: 3,
-            py: '100px',
-            width: '100%'
+            py: "100px",
+            width: "100%",
           }}
         >
+          <div id="google_translate_element"></div>
           <div>
-            <Stack
-              spacing={1}
-              sx={{ mb: 3 }}
-            >
-              <Typography variant="h4">
-                Login
-              </Typography>
-              <Typography
-                color="text.secondary"
-                variant="body2"
-              >
-                Don&apos;t have an account?
-                &nbsp;
+            <Stack spacing={1} sx={{ mb: 3 }}>
+              <Typography variant="h4">Login</Typography>
+              <Typography color="text.secondary" variant="body2">
+                Don&apos;t have an account? &nbsp;
                 <Link
                   component={NextLink}
                   href="/auth/register"
                   underline="hover"
                   variant="subtitle2"
-                  style={{ fontSize: '1.2rem' }}
+                  style={{ fontSize: "1.2rem" }}
                 >
                   Register
                 </Link>
               </Typography>
             </Stack>
-            <Tabs
-              onChange={handleMethodChange}
-              sx={{ mb: 3 }}
-              value={method}
-            >
-              <Tab
-                label="Email"
-                value="email"
-              />
-              {/* <Tab
-                label="Phone Number"
-                value="phoneNumber"
-              /> */}
+            <Tabs onChange={handleRoleChange} sx={{ mb: 3 }} value={role}>
+              <Tab label="Student" value="student" />
+              <Tab label="Counselor" value="counselor" />
+              <Tab label="Farmer" value="farmer" />
             </Tabs>
-            {method === 'email' && (
-              <form
-                noValidate
-                onSubmit={formik.handleSubmit}
-              >
+            {method === "email" && (
+              <form noValidate onSubmit={formik.handleSubmit}>
                 <Stack spacing={3}>
                   <TextField
                     error={!!(formik.touched.email && formik.errors.email)}
                     fullWidth
                     helperText={formik.touched.email && formik.errors.email}
-                    label="Email Address"
+                    label="Email Address/Phone"
                     name="email"
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
@@ -164,32 +150,20 @@ const Page = () => {
                     value={formik.values.password}
                   />
                 </Stack>
-                <FormHelperText sx={{ mt: 1 }}>
-                  {/* Optionally you can skip. */}
-                </FormHelperText>
+                <FormHelperText sx={{ mt: 1 }}>{/* Optionally you can skip. */}</FormHelperText>
                 {formik.errors.submit && (
-                  <Typography
-                    color="error"
-                    sx={{ mt: 3 }}
-                    variant="body2"
-                  >
+                  <Typography color="error" sx={{ mt: 3 }} variant="body2">
                     {formik.errors.submit}
                   </Typography>
                 )}
-                <Button
-                  fullWidth
-                  size="large"
-                  sx={{ mt: 3 }}
-                  type="submit"
-                  variant="contained"
-                >
+                <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
                   Continue
                 </Button>
                 <Button
                   fullWidth
                   size="large"
                   sx={{ mt: 3 }}
-                  onClick={(e)=>handleForgotPassword(e)}
+                  onClick={(e) => handleForgotPassword(e)}
                 >
                   Forgot Password?
                 </Button>
@@ -224,10 +198,6 @@ const Page = () => {
   );
 };
 
-Page.getLayout = (page) => (
-  <AuthLayout>
-    {page}
-  </AuthLayout>
-);
+Page.getLayout = (page) => <AuthLayout>{page}</AuthLayout>;
 
 export default Page;
