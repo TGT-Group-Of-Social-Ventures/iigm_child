@@ -132,7 +132,7 @@ export const AuthProvider = (props) => {
       const studentLoginURL = "https://backend.iigminstitute.com/api/auth/login";
       const otherURL = "";
       const baseURL = role === 'student' ? studentLoginURL : otherURL;
-      const response = await axios.post("https://backend.iigminstitute.com/api/auth/login", {
+      const response = await axios.post(baseURL, {
         email,
         password,
       });
