@@ -53,7 +53,7 @@ const Page = () => (
             />
           </Box>
           <Typography align="center" sx={{ mb: 3 }} variant="h3">
-            404: The page you are looking for isn’t here
+            404: The page you are looking for is not here
           </Typography>
           <Typography align="center" color="text.secondary" variant="body1">
             You either tried some shady route or you came here by mistake. Whichever it is, try
