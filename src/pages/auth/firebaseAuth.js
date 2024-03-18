@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { auth, signInWithGooglePopup } from "../../firebaseConfig/index";
-import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
+import { RecaptchaVerifier, signInWithPhoneNumber, getAuth } from "firebase/auth";
 
 const Login = () => {
+  const auth1 = getAuth();
+  console.log(auth);
   const [phone, setPhone] = useState("+91");
   const [otp, setOtp] = useState("");
   const [verificationId, setVerificationId] = useState(null);
@@ -16,20 +18,18 @@ const Login = () => {
     setOtp(e.target.value);
   };
 
-  const generateRecaptcha = async() => {
-    window.recaptchaVerifier = new RecaptchaVerifier(auth, "sign-in-button", {
-      size: "invisible",
-      callback: (response) => {
-        // reCAPTCHA solved, allow signInWithPhoneNumber.
-        // ...
-      },
-    });
-  };    
-  const handleSendOtp = async() => {
-    await generateRecaptcha();
+  window.recaptchaVerifier = new RecaptchaVerifier(auth1, "sign-in-button", {
+    size: "invisible",
+    callback: (response) => {
+      // reCAPTCHA solved, allow signInWithPhoneNumber.
+      handleSendOtp();
+    },
+  });
+
+  const handleSendOtp = async () => {
     let appVerifier = window.recaptchaVerifier;
 
-    signInWithPhoneNumber(auth, phone, appVerifier)
+    signInWithPhoneNumber(auth1, phone, appVerifier)
       .then((confirmationResult) => {
         // SMS sent. Prompt user to type the code from the message, then sign the
         // user in with confirmationResult.confirm(code).
@@ -74,7 +74,9 @@ const Login = () => {
       <h2>Login</h2>
       <div id="recaptcha-container"></div>
       <input type="text" placeholder="Phone Number" value={phone} onChange={handlePhoneChange} />
-      <button onClick={handleSendOtp}>Send OTP</button>
+      <button id="sign-in-button" onClick={handleSendOtp}>
+        Send OTP
+      </button>
       <input type="text" placeholder="OTP" value={otp} onChange={handleOtpChange} />
       <button onClick={handleSignInWithOtp}>Sign In with OTP</button>
       <button onClick={handleSignInWithGoogle}>Sign In with Google</button>
