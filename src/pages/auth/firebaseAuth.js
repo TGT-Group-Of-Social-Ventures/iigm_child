@@ -1,21 +1,9 @@
 import React, { useState } from "react";
-import firebase from "firebase/app";
-import "firebase/auth";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyBsBEGXJCXYg6MLz2SNdUw8aqT43c9Q9bA",
-  authDomain: "self-certification-lbc.firebaseapp.com",
-  projectId: "self-certification-lbc",
-  storageBucket: "self-certification-lbc.appspot.com",
-  messagingSenderId: "947284446681",
-  appId: "1:947284446681:web:6a1a4604e6ec8f3695ddc8",
-  measurementId: "G-DDR9WBWTH3",
-};
-
-firebase.initializeApp(firebaseConfig);
+import { auth, signInWithGooglePopup } from "../../firebaseConfig/index";
+import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 
 const Login = () => {
-  const [phone, setPhone] = useState("");
+  const [phone, setPhone] = useState("+91");
   const [otp, setOtp] = useState("");
   const [verificationId, setVerificationId] = useState(null);
   const [error, setError] = useState(null);
@@ -28,49 +16,57 @@ const Login = () => {
     setOtp(e.target.value);
   };
 
-  const handleSendOtp = () => {
-    const recaptchaVerifier = new firebase.auth.RecaptchaVerifier("recaptcha-container", {
+  const generateRecaptcha = async() => {
+    window.recaptchaVerifier = new RecaptchaVerifier(auth, "sign-in-button", {
       size: "invisible",
+      callback: (response) => {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+        // ...
+      },
     });
-    firebase
-      .auth()
-      .signInWithPhoneNumber(phone, recaptchaVerifier)
-      .then((verificationId) => {
-        setVerificationId(verificationId);
+  };    
+  const handleSendOtp = async() => {
+    await generateRecaptcha();
+    let appVerifier = window.recaptchaVerifier;
+
+    signInWithPhoneNumber(auth, phone, appVerifier)
+      .then((confirmationResult) => {
+        // SMS sent. Prompt user to type the code from the message, then sign the
+        // user in with confirmationResult.confirm(code).
+        window.confirmationResult = confirmationResult;
       })
-      .catch((err) => {
-        setError(err.message);
+      .catch((error) => {
+        window.recaptchaVerifier.render().then(function (widgetId) {
+          grecaptcha.reset(widgetId);
+        });
+        console.log(error);
       });
   };
 
   const handleSignInWithOtp = () => {
-    const credential = firebase.auth.PhoneAuthProvider.credential(verificationId, otp);
-    firebase
-      .auth()
-      .signInWithCredential(credential)
-      .then((userCredential) => {
-        // User successfully signed in
-        const user = userCredential.user;
-        console.log("User signed in:", user);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+    if (otp.length === 6) {
+      // verifu otp
+      let confirmationResult = window.confirmationResult;
+      confirmationResult
+        .confirm(otp)
+        .then((result) => {
+          // User signed in successfully.
+          let user = result.user;
+          console.log(user);
+          alert("User signed in successfully");
+          // ...
+        })
+        .catch((error) => {
+          // User couldn't sign in (bad verification code?)
+          // ...
+          alert("User couldn't sign in (bad verification code?)");
+        });
+    }
   };
 
-  const handleSignInWithGoogle = () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    firebase
-      .auth()
-      .signInWithPopup(provider)
-      .then((result) => {
-        // User successfully signed in with Google
-        const user = result.user;
-        console.log("User signed in with Google:", user);
-      })
-      .catch((err) => {
-        setError(err.message);
-      });
+  const handleSignInWithGoogle = async () => {
+    const response = await signInWithGooglePopup();
+    console.log(response);
   };
 
   return (
