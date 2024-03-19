@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { auth, signInWithGooglePopup } from "../../firebaseConfig/index";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { useRouter } from "next/router";
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 const Login = () => {
   const router = useRouter();
@@ -32,7 +38,7 @@ const Login = () => {
   const handleSendOtp = async () => {
     try {
       const response = await signInWithPhoneNumber(auth, phone, recaptcha);
-      alert("otp sended successfully");
+      alert("OTP sent successfully");
       setShowCaptcha(false);
       setConfirmation(response);
     } catch (error) {
@@ -59,8 +65,8 @@ const Login = () => {
         console.log(data);
       }
     } catch (error) {
-      alert("Failed verifying otp");
-      console.log("error verifying otp", error);
+      alert("Failed verifying OTP");
+      console.log("Error verifying OTP", error);
     }
   };
 
@@ -70,24 +76,61 @@ const Login = () => {
       console.log(response);
       router.push("/auth/deleteAccount");
     } catch (error) {
-      console.log("error logging in", error);
+      console.log("Error logging in", error);
     }
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <Box
+      sx={{
+        maxWidth: 400,
+        margin: "0 auto",
+        padding: 3,
+        backgroundColor: "background.paper",
+        borderRadius: 4,
+        boxShadow: 2,
+        textAlign: "center"
+      }}
+    >
+      <Typography variant="h4" gutterBottom>
+  Login
+</Typography>
+<Typography variant="body1" gutterBottom>
+  When logging in, please provide the original email address or phone number associated with your account. This should be the same email or phone number used during registration. 
+</Typography>
       <div id="recaptcha-container"></div>
-      <input type="text" placeholder="Phone Number" value={phone} onChange={handlePhoneChange} />
-      <button id="sign-in-button" onClick={handleSendOtp}>
+      <TextField
+        fullWidth
+        type="text"
+        placeholder="Phone Number"
+        value={phone}
+        onChange={handlePhoneChange}
+        sx={{ marginBottom: 2 }}
+      />
+      <Button variant="contained" onClick={handleSendOtp} sx={{ marginBottom: 2 }}>
         Send OTP
-      </button>
-      <input type="text" placeholder="OTP" value={otp} onChange={handleOtpChange} />
-      <button onClick={handleSignInWithOtp}>Sign In with OTP</button>
-      <button onClick={handleSignInWithGoogle}>Sign In with Google</button>
-      {error && <p>{error}</p>}
+      </Button>
+      <TextField
+        fullWidth
+        type="text"
+        placeholder="OTP"
+        value={otp}
+        onChange={handleOtpChange}
+        sx={{ marginBottom: 2 }}
+      />
+      <Button
+  variant="contained"
+  onClick={handleSignInWithOtp}
+  sx={{ marginBottom: 2 }}
+>
+  Sign In with OTP
+</Button>
+      <Button variant="contained" onClick={handleSignInWithGoogle} sx={{ marginBottom: 2, marginLeft: 1 }}>
+        Sign In with Google
+      </Button>
+      {error && <Typography color="error">{error}</Typography>}
       {showCaptcha && <div id="recaptcha"></div>}
-    </div>
+    </Box>
   );
 };
 

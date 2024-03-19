@@ -3,6 +3,7 @@ import { getAuth, deleteUser, signOut } from "firebase/auth";
 import { db, auth } from "src/firebaseConfig";
 import { useRouter } from "next/router";
 import { doc, deleteDoc } from "firebase/firestore";
+import { Button, Typography, Box } from "@mui/material";
 
 export default function DeleteAccount() {
   const user = auth.currentUser;
@@ -18,41 +19,56 @@ export default function DeleteAccount() {
   };
 
   const handleDelete = async () => {
-    // await db.collection("users").doc(uid).delete;
-    try {
-      const uid = user.uid;
-      await deleteFromDatabase(uid);
-      const response = await deleteUser(user);
-      console.log("res", response);
-      alert("Success");
-      router.push("/auth/firebaseAuth");
-    } catch (error) {
-      alert("error deleting data");
-      console.log("error", error);
+    const confirmDelete = window.confirm(
+      "Warning: Deleting your account will permanently remove all your information from the app, including course access, login information, etc. Are you sure you want to proceed?"
+    );
+    if (confirmDelete) {
+      try {
+        const uid = user.uid;
+        await deleteFromDatabase(uid);
+        const response = await deleteUser(user);
+        console.log("res", response);
+        alert("Account deleted successfully.");
+        router.push("/auth/firebaseAuth");
+      } catch (error) {
+        alert("Error deleting account");
+        console.log("error", error);
+      }
     }
   };
 
   const handleSignOut = async () => {
-    console.log("auth", auth);
-
     try {
       const response = await signOut(auth);
       console.log("res", response);
       router.push("/auth/firebaseAuth");
     } catch (error) {
-      alert("error signing out");
+      alert("Error signing out");
       console.log("error", error);
     }
   };
 
   return (
-    <>
-      <button id="delte" onClick={handleDelete}>
-        Delete
-      </button>
-      <button id="signout" onClick={handleSignOut}>
-        Sign Out
-      </button>
-    </>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
+      <Typography variant="body1" gutterBottom>
+        Warning: Deleting your account will permanently remove all your information from the app, including course access, login information, etc.
+      </Typography>
+      <Box sx={{ mt: 2 }}>
+        <Button id="delete" variant="contained" size="small" onClick={handleDelete} sx={{ mr: 2 }}>
+          Delete Account
+        </Button>
+        <Button id="signout" variant="contained" size="small" onClick={handleSignOut}>
+          Sign Out
+        </Button>
+      </Box>
+    </Box>
   );
 }
