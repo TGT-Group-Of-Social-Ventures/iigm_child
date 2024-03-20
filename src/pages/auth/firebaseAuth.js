@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth, signInWithGooglePopup } from "../../firebaseConfig/index";
 import { RecaptchaVerifier, signInWithPhoneNumber } from "firebase/auth";
 import { useRouter } from "next/router";
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 
 const Login = () => {
   const router = useRouter();
@@ -83,53 +78,65 @@ const Login = () => {
   return (
     <Box
       sx={{
-        maxWidth: 400,
-        margin: "0 auto",
-        padding: 3,
-        backgroundColor: "background.paper",
-        borderRadius: 4,
-        boxShadow: 2,
-        textAlign: "center"
+        width: "100%",
+        height : "100%",
+        display: "grid",
+        placeItems: "center",
       }}
     >
-      <Typography variant="h4" gutterBottom>
-  Login
-</Typography>
-<Typography variant="body1" gutterBottom>
-  When logging in, please provide the original email address or phone number associated with your account. This should be the same email or phone number used during registration. 
-</Typography>
-      <div id="recaptcha-container"></div>
-      <TextField
-        fullWidth
-        type="text"
-        placeholder="Phone Number"
-        value={phone}
-        onChange={handlePhoneChange}
-        sx={{ marginBottom: 2 }}
-      />
-      <Button variant="contained" onClick={handleSendOtp} sx={{ marginBottom: 2 }}>
-        Send OTP
-      </Button>
-      <TextField
-        fullWidth
-        type="text"
-        placeholder="OTP"
-        value={otp}
-        onChange={handleOtpChange}
-        sx={{ marginBottom: 2 }}
-      />
-      <Button
-  variant="contained"
-  onClick={handleSignInWithOtp}
-  sx={{ marginBottom: 2 }}
->
-  Sign In with OTP
-</Button>
-      <Button variant="contained" onClick={handleSignInWithGoogle} sx={{ marginBottom: 2, marginLeft: 1 }}>
-        Sign In with Google
-      </Button>
-      {error && <Typography color="error">{error}</Typography>}
-      {showCaptcha && <div id="recaptcha"></div>}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          margin: "0 auto",
+          borderRadius: 4,
+          boxShadow: 2,
+          textAlign: "center",
+          padding: 3,
+          backgroundColor: "background.paper",
+          maxWidth : 400
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          Goat Gurukul App Account Deletion
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+          When logging in, please provide the original email address or phone number associated with
+          your account. This should be the same email or phone number used during registration.
+        </Typography>
+        <div id="recaptcha-container"></div>
+        <TextField
+          fullWidth
+          type="text"
+          placeholder="Phone Number"
+          value={phone}
+          onChange={handlePhoneChange}
+          sx={{ marginBottom: 2 }}
+        />
+        <Button variant="contained" onClick={handleSendOtp} sx={{ marginBottom: 2 }}>
+          Send OTP
+        </Button>
+        <TextField
+          fullWidth
+          type="text"
+          placeholder="OTP"
+          value={otp}
+          onChange={handleOtpChange}
+          sx={{ marginBottom: 2 }}
+        />
+        <Button variant="contained" onClick={handleSignInWithOtp} sx={{ marginBottom: 2 }}>
+          Sign In with OTP
+        </Button>
+        <Button
+          variant="contained"
+          onClick={handleSignInWithGoogle}
+          sx={{ marginBottom: 2, marginLeft: 1 }}
+        >
+          Sign In with Google
+        </Button>
+        {error && <Typography color="error">{error}</Typography>}
+        {showCaptcha && <div id="recaptcha"></div>}
+      </Box>
     </Box>
   );
 };

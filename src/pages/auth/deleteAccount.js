@@ -58,9 +58,10 @@ export default function DeleteAccount() {
         height: "100vh",
       }}
     >
-      <Typography variant="body1" gutterBottom>
-        Warning: Deleting your account will permanently remove all your information from the app, including course access, login information, etc.
-      </Typography>
+      <Typography variant="body1" gutterBottom sx={{color:"red"}}>http://localhost:3000
+  Warning: Deleting your account will permanently remove all of your information from the app, including course access, login information, etc. 
+  If you do not wish to delete your account, please sign out.
+</Typography>
       <Box sx={{ mt: 2 }}>
         <Button id="delete" variant="contained" size="small" onClick={handleDelete} sx={{ mr: 2 }}>
           Delete Account
