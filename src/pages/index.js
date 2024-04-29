@@ -133,6 +133,26 @@ const Page = () => (
                   ref: "DEV1049",
                   amount: 30.5,
                   customer: {
+                    name: "Goat Gurukul app is now available on Play Store.",
+                  },
+                  createdAt: 1710979600000,
+                  status: "pending",
+                },
+                {
+                  id: "f69f88012978187a6c12897f",
+                  ref: "DEV1049",
+                  amount: 30.5,
+                  customer: {
+                    name: "LEBM 5th Batch started officialy.",
+                  },
+                  createdAt: 1710979600000,
+                  status: "pending",
+                },
+                {
+                  id: "f69f88012978187a6c12897f",
+                  ref: "DEV1049",
+                  amount: 30.5,
+                  customer: {
                     name: "IIGMA celebrates 5 years",
                   },
                   createdAt: 1698739200000,
