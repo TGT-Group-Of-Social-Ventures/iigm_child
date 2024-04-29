@@ -39,21 +39,21 @@ const Page = () => (
       <Container maxWidth="xl">
         <Grid container spacing={3}>
           <Grid xs={12} sm={6} lg={3}>
-            <OverviewBudget difference={400} positive sx={{ height: "100%" }} value="4" />
+            <OverviewBudget difference={100} positive sx={{ height: "100%" }} value="5" />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
             <OverviewTotalCustomers
-              difference={1500}
+              difference={1200}
               positive={true}
               sx={{ height: "100%" }}
-              value="15"
+              value="375"
             />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
-            <OverviewTasksProgress sx={{ height: "100%" }} value={5} />
+            <OverviewTasksProgress sx={{ height: "100%" }} value={95} />
           </Grid>
           <Grid xs={12} sm={6} lg={3}>
-            <OverviewTotalProfit sx={{ height: "100%" }} value="4" />
+            <OverviewTotalProfit sx={{ height: "100%" }} value="5" />
           </Grid>
           {/* <Grid
             xs={12}
