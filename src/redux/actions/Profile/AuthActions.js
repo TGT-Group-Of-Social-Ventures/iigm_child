@@ -1,4 +1,4 @@
-import { PROFILE } from "./ActionTypes";
+import { PROFILE, PROFILE_UPDATE } from "./ActionTypes";
 import axios from "axios";
 
 export const getAllUserDetails = () => {
@@ -23,3 +23,27 @@ export const getAllUserDetails = () => {
     }
   };
 };
+
+export const updateProfile = (values)=>{
+  return async(dispatch) => {
+    try{
+      const response = await axios.post("http://localhost:4000/api/auth/updateProfile",values);
+      if(response.data.status){
+        dispatch({
+          type : PROFILE_UPDATE,
+          payload : response.data.user
+        })
+      }else{
+        dispatch({
+          type : PROFILE_UPDATE,
+          payload : values
+        })
+      }
+    }catch(error){
+      dispatch({
+        type : PROFILE_UPDATE,
+        payload : values
+      })
+    }
+  }
+}

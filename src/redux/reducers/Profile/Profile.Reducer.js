@@ -1,4 +1,4 @@
-import { PROFILE } from "../../actions/Profile/ActionTypes";
+import { PROFILE, PROFILE_UPDATE } from "../../actions/Profile/ActionTypes";
 
 const initialState = {
   userData: {},
@@ -15,6 +15,13 @@ const ProfileReducer = (state = initialState, action) => {
         error: false,
         loading: false,
       };
+    case PROFILE_UPDATE : 
+      return {
+        ...state,
+        userData : action.paylaod,
+        error : false,
+        loading : false
+      }
     default:
       return state;
   }
